@@ -42,8 +42,7 @@ def general_properties(smiles):
             # print(f"Failed to load molecule from {file_name}")
             return None
 
-        # Calculate various topological structural features
-        validity = '.' in smiles
+        validity = '.' not in smiles
         if validity:
             qed_score = qed(mol)
             sa_score = compute_sa_score(mol)
@@ -54,6 +53,7 @@ def general_properties(smiles):
         print(f"Error processing molecule from {smiles}: {e}")
 
     return {
+        'smiles': smiles,
         'validity': validity,
         'qed': qed_score,
         'sa': sa_score,

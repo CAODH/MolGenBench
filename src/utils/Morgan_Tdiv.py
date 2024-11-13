@@ -5,7 +5,6 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.DataStructs import TanimotoSimilarity
 from itertools import combinations
-from multiprocessing import Pool
 
 #Calculate Morgan fingerprint
 def calculate_morgan_fingerprint(molecule, radius=2, nBits=2048):
@@ -14,8 +13,9 @@ def calculate_morgan_fingerprint(molecule, radius=2, nBits=2048):
     fingerprint = AllChem.GetMorganFingerprintAsBitVect(molecule, radius, nBits=nBits)
     return fingerprint
 
-def calculate_Morgan_fingerprint_div_single_target(molecule_list: List[Chem.Mol]):
-    mols = [mol for mol in molecule_list if mol is not None]
+def calculate_Morgan_fingerprint_div_single_target(smiles_list: List[str]) -> float:
+    mols = [Chem.MolFromSmiles(smi) for smi in smiles_list]
+    mols = [mol for mol in mols if mol is not None]
     if len(mols) == 0:
         return 0.0
     if len(mols) == 1:
