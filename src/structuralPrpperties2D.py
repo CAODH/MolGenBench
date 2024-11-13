@@ -4,28 +4,6 @@ from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from joblib import Parallel, delayed
 from tqdm import tqdm
-<<<<<<< HEAD
-
-
-
-
-def calculate_uniqueness(molecule_list: List[Chem.Mol]):
-    mols = [mol for mol in molecule_list if mol is not None]
-    if len(mols) == 0:
-        return 0.0
-    if len(mols) == 1:
-        return 1.0
-    
-    unique_molecules = set()
-    for mol in mols:
-        unique_molecules.add(Chem.MolToSmiles(mol))
-    uniqueness = len(unique_molecules) / len(mols)
-    
-    return uniqueness
-            
-
-
-=======
 import collections
 from scipy import spatial as sci_spatial
 import numpy as np
@@ -34,6 +12,32 @@ from rdkit import Chem
 from collections import Counter
 import pandas as pd
 import json
+def getFuncGroup(mol):
+    """"
+    mol: rdkit mol object
+    
+    """
+    try:
+        fgs, _ = mol2frag(mol)
+    except:
+        return []
+    return fgs
+def getAtomType(mol):
+
+    return [ atom.GetSymbol() for atom in mol.GetAtoms()] 
+def getRingType(mol):
+    ring_info = mol.GetRingInfo()
+    ring_type = [len(r) for r in ring_info.AtomRings()]
+    return ring_type
+def getAllTypes(mol):
+    return getFuncGroup(mol) , getAtomType(mol) , getRingType(mol)
+def readMols(file_name):
+    if file_name.endswith('.sdf'):
+        return [Chem.MolToSmiles(mol) for mol in Chem.SDMolSupplier(file_name)]
+    elif file_name.endswith('.smi') or file_name.endswith('.txt'):
+        return [line.strip() for line in open(file_name)]
+    else:
+        raise ValueError('Invalid file format')
 def evalSubTypeDist(ref_groups,generate_group,ref_num_mols,generated_num_mols):
     """
     Calculate the JSD and MAE of subtypes of molecules.
@@ -73,34 +77,6 @@ def evalSubTypeDist(ref_groups,generate_group,ref_num_mols,generated_num_mols):
     mae = np.abs((np.array(list(ref_type_ratio.values())) - 
                     np.array(list(generated_type_ratio.values())))).mean()
     return mae, generated_type_ratio,js,generated_type_dist,ref_type_ratio,ref_type_dist
-
-
-def getFuncGroup(mol):
-    """"
-    mol: rdkit mol object
-    
-    """
-    try:
-        fgs, _ = mol2frag(mol)
-    except:
-        return []
-    return fgs
-def getAtomType(mol):
-
-    return [ atom.GetSymbol() for atom in mol.GetAtoms()] 
-def getRingType(mol):
-    ring_info = mol.GetRingInfo()
-    ring_type = [len(r) for r in ring_info.AtomRings()]
-    return ring_type
-def getAllTypes(mol):
-    return getFuncGroup(mol) , getAtomType(mol) , getRingType(mol)
-def readMols(file_name):
-    if file_name.endswith('.sdf'):
-        return [Chem.MolToSmiles(mol) for mol in Chem.SDMolSupplier(file_name)]
-    elif file_name.endswith('.smi') or file_name.endswith('.txt'):
-        return [line.strip() for line in open(file_name)]
-    else:
-        raise ValueError('Invalid file format')
 
 def parallelEvalSubTypeDist(ref_file,generated_file,output_file,njobs):
     # load actives and generated molecules      
@@ -171,7 +147,6 @@ def parallelEvalSubTypeDist(ref_file,generated_file,output_file,njobs):
     return_result['Ring Type Reference Distribution'] =[ json.dumps(ref_ring_dist)]
     pd.DataFrame(return_result).to_csv(output_file,index = False)
 
->>>>>>> 2fb3ed6 (format output to csv)
 def structural_properties(smiles):
     """
     Calculate the topological structure characteristics of molecules and save the results to an output file.
