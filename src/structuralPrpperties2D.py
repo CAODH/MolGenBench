@@ -1,8 +1,29 @@
 import os
+from typing import List
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from joblib import Parallel, delayed
 from tqdm import tqdm
+
+
+
+
+def calculate_uniqueness(molecule_list: List[Chem.Mol]):
+    mols = [mol for mol in molecule_list if mol is not None]
+    if len(mols) == 0:
+        return 0.0
+    if len(mols) == 1:
+        return 1.0
+    
+    unique_molecules = set()
+    for mol in mols:
+        unique_molecules.add(Chem.MolToSmiles(mol))
+    uniqueness = len(unique_molecules) / len(mols)
+    
+    return uniqueness
+            
+
+
 def structural_properties(smiles):
     """
     Calculate the topological structure characteristics of molecules and save the results to an output file.
