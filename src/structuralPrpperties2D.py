@@ -1,41 +1,12 @@
 import os
-from collections import Counter
-from copy import deepcopy
-import numpy as np
 from typing import List
-from itertools import combinations
 from rdkit import Chem
-from rdkit.Chem.QED import qed
-from rdkit.Chem import AllChem, rdMolDescriptors, Descriptors, Crippen, Lipinski
-from rdkit.DataStructs import TanimotoSimilarity
+from rdkit.Chem import rdMolDescriptors
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
 
-from src.utils.sascore import compute_sa_score
 
-
-def calculate_morgan_fingerprint(molecule, radius=2, nBits=2048):
-    if molecule is None:
-        return None
-    fingerprint = AllChem.GetMorganFingerprintAsBitVect(molecule, radius, nBits=nBits)
-    return fingerprint
-
-
-def calculate_Morgan_fingerprint_Tdiv(molecule_list: List[Chem.Mol]):
-    mols = [mol for mol in molecule_list if mol is not None]
-    if len(mols) == 0:
-        return 0.0
-    if len(mols) == 1:
-        return 1.0
-
-    morgan_fingerprints = [calculate_morgan_fingerprint(mol) for mol in mols]
-
-    tanimoto_similarities = [
-        TanimotoSimilarity(f1, f2)
-        for f1, f2 in combinations(morgan_fingerprints, 2)
-    ]
-    return 1 - np.mean(tanimoto_similarities)
 
 def calculate_uniqueness(molecule_list: List[Chem.Mol]):
     mols = [mol for mol in molecule_list if mol is not None]
@@ -51,60 +22,6 @@ def calculate_uniqueness(molecule_list: List[Chem.Mol]):
     
     return uniqueness
             
-
-def get_logp(mol):
-    return Crippen.MolLogP(mol)
-
-def obey_lipinski(mol):
-    mol = deepcopy(mol)
-    Chem.SanitizeMol(mol)
-    rule_1 = Descriptors.ExactMolWt(mol) < 500
-    rule_2 = Lipinski.NumHDonors(mol) <= 5
-    rule_3 = Lipinski.NumHAcceptors(mol) <= 10
-    logp = get_logp(mol)
-    rule_4 = (logp >= -2) & (logp <= 5)
-    rule_5 = Chem.rdMolDescriptors.CalcNumRotatableBonds(mol) <= 10
-    return np.sum([int(a) for a in [rule_1, rule_2, rule_3, rule_4, rule_5]])
-
-def general_properties(smiles):
-    """
-    Calculate the topological structure characteristics of molecules and save the results to an output file.
-
-    :param file_name: File name of the SDF file
-    :param smiles: SMILES
-    :param output_folder: Output file path
-    """
-    
-    qed_score = None
-    sa_score = None
-    logp_score = None
-    lipinski_score = None
-    
-    try:
-        mol = Chem.MolFromSmiles(smiles)
-        if mol is None:
-            # print(f"Failed to load molecule from {file_name}")
-            return None
-
-        # Calculate various topological structural features
-        validity = '.' in smiles
-        if validity:
-            qed_score = qed(mol)
-            sa_score = compute_sa_score(mol)
-            logp_score = get_logp(mol)
-            lipinski_score = obey_lipinski(mol)
-
-    except Exception as e:
-        print(f"Error processing molecule from {smiles}: {e}")
-
-    return {
-        'validity': validity,
-        'qed': qed_score,
-        'sa': sa_score,
-        'logp': logp_score,
-        'lipinski': lipinski_score,
-        # 'ring_size': ring_size
-    }
 
 
 def structural_properties(smiles):
