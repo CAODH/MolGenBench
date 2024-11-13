@@ -1,4 +1,5 @@
 import os
+from typing import List
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from joblib import Parallel, delayed
