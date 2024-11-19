@@ -1,5 +1,4 @@
 import os
-from typing import List
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from joblib import Parallel, delayed
@@ -215,6 +214,7 @@ def parallelStructuralProperties(file_name, njobs,output_file):
 
 if __name__ == '__main__':
     import argparse
+    import time 
     parser = argparse.ArgumentParser(description='Calculate 2D structural properties of molecules')
     
     parser.add_argument('--ref_file_name', type=str,default='/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757/O14757_result_from_PGMG.txt', help='File name of the SDF or .smi or .txt file')
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     parser.add_argument('--file_name', type=str,default = '/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757/O14757_result_from_PGMG.txt', help='File name of the SDF or .smi or .txt file')
     
     args = parser.parse_args()
-    import time 
+    
     start =  time.strftime("%Y-%m-%d", time.localtime())
 
     args.output_file = args.output_file if args.output_file is not None else f'{os.path.dirname(args.file_name)}/{start}_2D_properties_base.csv'
