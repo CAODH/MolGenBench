@@ -18,55 +18,25 @@ from rdkit.Chem import rdMolAlign
 from spyrmsd import molecule
 from spyrmsd import rmsd as spy_rmsd
 
-from src.utils.cacl_SC_RDKit import calc_SC_RDKit_score, calc_SC_RDKit_score_new, cache_ref_feats
+from src.utils.cacl_SC_RDKit import calc_SC_RDKit_score
 from src.utils.misc import time_limit, TimeoutException
 
-# def calc_sc_rdkit_full_mol(idx, gen_mol, ref_mols):
-#     max_sc_score = np.nan
-#     try:
-#         gen_mol = Chem.AddHs(gen_mol)
-#         for ref_mol in ref_mols:
-#             try:
-#                 ref_mol = Chem.AddHs(ref_mol)
-#                 # _ = rdMolAlign.GetO3A(gen_mol, ref_mol).Align()
-#                 sc_score = calc_SC_RDKit_score(gen_mol, ref_mol)
-                
-#                 if (np.isnan(max_sc_score) or sc_score > max_sc_score):
-#                     max_sc_score = sc_score
-#             except Exception as e:
-#                 print(f"[SC_RDKIT] Error processing molecule: {e}")
-#                 continue
-#     except:
-#         max_sc_score = np.nan
-        
-#     return {
-#         'idx': idx,
-#         'sc_rdkit': max_sc_score
-#     }
-
-def calc_sc_rdkit_full_mol_new(idx, gen_mol, ref_mols, ref_feats_cache):
+def calc_sc_rdkit_full_mol(idx, gen_mol, ref_mols):
     max_sc_score = np.nan
     try:
         gen_mol = Chem.AddHs(gen_mol)
-        
-        # 遍历每个 ref_mol，并使用缓存的特征计算相似度
-        for i, ref_mol in enumerate(ref_mols):
+        for ref_mol in ref_mols:
             try:
                 ref_mol = Chem.AddHs(ref_mol)
-                # 获取缓存中的 ref_feats
-                ref_feats = ref_feats_cache[i]
+                # _ = rdMolAlign.GetO3A(gen_mol, ref_mol).Align()
+                sc_score = calc_SC_RDKit_score(gen_mol, ref_mol)
                 
-                # 计算 SC_RDKit score
-                sc_score = calc_SC_RDKit_score_new(gen_mol, ref_mol, ref_feats)
-                
-                # 更新最大得分
                 if (np.isnan(max_sc_score) or sc_score > max_sc_score):
                     max_sc_score = sc_score
             except Exception as e:
-                print(f"[SC_RDKIT] Error processing molecule {idx} with reference {i}: {e}")
+                print(f"[SC_RDKIT] Error processing molecule: {e}")
                 continue
-    except Exception as e:
-        print(f"[SC_RDKIT] Error processing query molecule {idx}: {e}")
+    except:
         max_sc_score = np.nan
         
     return {
@@ -190,12 +160,11 @@ def parallelSC_RDkit(input_file, reference_file, njobs, output_file):
     
     ref_suppl = Chem.SDMolSupplier(reference_file) 
     ref_mols = [mol for mol in ref_suppl if mol is not None]
-    ref_feats_cache = cache_ref_feats(ref_mols)
     
     input_suppl = Chem.SDMolSupplier(input_file)
-    paired_list = [(mol.GetProp('_Name'), mol, ref_mols, ref_feats_cache) for mol in input_suppl if mol is not None]
+    paired_list = [(mol.GetProp('_Name'), mol, ref_mols) for mol in input_suppl if mol is not None]
     
-    results = Parallel(n_jobs=njobs)(delayed(calc_sc_rdkit_full_mol_new)(item[0], item[1], item[2], item[3]) for item in tqdm(paired_list, total=len(paired_list)))
+    results = Parallel(n_jobs=njobs)(delayed(calc_sc_rdkit_full_mol)(item[0], item[1], item[2]) for item in tqdm(paired_list, total=len(paired_list)))
     
     results_dict = {
         'idx': [],
@@ -255,25 +224,25 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Calculate RMSD')
     parser.add_argument('--output_file', type=str,default=None, help='Output file path')
     parser.add_argument('--njobs', type=int,default = 30, help='num of process to use')
-    parser.add_argument('--generated_file', type=str,default = '/home/datahouse1/fanzhehuan/myprojects/SBDDBench/TestSamples/O14757/O14757_Pocket2Mol_generated_molecules.sdf', help='File name of the SDF that contains generated 3D molecules')
-    parser.add_argument('--docked_file', type=str, default = '/home/datahouse1/fanzhehuan/myprojects/SBDDBench/TestSamples/O14757/O14757_Pocket2Mol_generated_molecules_ligprep_glide_sp_pv.sdf', help='File name of the SDF that contains docked 3D molecules')
-    parser.add_argument('--ref_file', type=str, default='/home/datahouse1/fanzhehuan/myprojects/SBDDBench/TestSamples/O14757/O14757_all_active_molecules_ligprep_glide_sp_pv.sdf', help='File name of the reference positive 3D molecules')
+    parser.add_argument('--generated_file', type=str,default = './TestSamples/O14757/O14757_Pocket2Mol_generated_molecules.sdf', help='File name of the SDF that contains generated 3D molecules')
+    parser.add_argument('--docked_file', type=str, default = './TestSamples/O14757/O14757_Pocket2Mol_generated_molecules_ligprep_glide_sp_pv.sdf', help='File name of the SDF that contains docked 3D molecules')
+    parser.add_argument('--ref_file', type=str, default='./TestSamples/O14757/O14757_all_active_molecules_ligprep_glide_sp_pv.sdf', help='File name of the reference positive 3D molecules')
     
     args = parser.parse_args()
     start =  time.strftime("%Y-%m-%d", time.localtime())
 
     args.output_file = args.output_file if args.output_file is not None else f'{os.path.dirname(args.generated_file)}/{start}_rmsd.csv'
-    # rmsd_results_df = parallelRMSD(args.generated_file, args.docked_file, args.njobs, args.output_file)
-    # rmsd_summary_df = get_rmsd_summary_stats(rmsd_results_df)
-    # rmsd_summary_output_file =f'{os.path.dirname(args.generated_file)}/{start}_rmsd_summary.csv'
-    # rmsd_summary_df.to_csv(rmsd_summary_output_file, index=False)
+    rmsd_results_df = parallelRMSD(args.generated_file, args.docked_file, args.njobs, args.output_file)
+    rmsd_summary_df = get_rmsd_summary_stats(rmsd_results_df)
+    rmsd_summary_output_file =f'{os.path.dirname(args.generated_file)}/{start}_rmsd_summary.csv'
+    rmsd_summary_df.to_csv(rmsd_summary_output_file, index=False)
     
-    gen_sc_rdkit_df = parallelSC_RDkit(args.generated_file, args.ref_file, args.njobs, f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_gen_new.csv')
+    gen_sc_rdkit_df = parallelSC_RDkit(args.generated_file, args.ref_file, args.njobs, f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_gen.csv')
     gen_sc_rdkit_summary_df = get_sc_rdkit_summary_stats(gen_sc_rdkit_df)
-    gen_sc_rdkit_summary_output_file = f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_summary_gen_new.csv'
+    gen_sc_rdkit_summary_output_file = f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_summary_gen.csv'
     gen_sc_rdkit_summary_df.to_csv(gen_sc_rdkit_summary_output_file, index=False)
     
-    docked_sc_rdkit_df = parallelSC_RDkit(args.docked_file, args.ref_file, args.njobs, f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_docked_new.csv')
+    docked_sc_rdkit_df = parallelSC_RDkit(args.docked_file, args.ref_file, args.njobs, f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_docked.csv')
     docked_sc_rdkit_summary_df = get_sc_rdkit_summary_stats(docked_sc_rdkit_df)
-    docked_sc_rdkit_summary_output_file = f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_summary_docked_new.csv'
+    docked_sc_rdkit_summary_output_file = f'{os.path.dirname(args.generated_file)}/{start}_sc_rdkit_summary_docked.csv'
     docked_sc_rdkit_summary_df.to_csv(docked_sc_rdkit_summary_output_file, index=False)
