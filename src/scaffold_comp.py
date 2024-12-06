@@ -82,8 +82,8 @@ def resultToCsv(result,uniprot_id,father_path):
 
     pd_result = pd.DataFrame(pd_result).sort_values(by = "NumFilteredMols",ascending = False)
     
-    start =  time.strftime("%Y-%m-%d", time.localtime())
-    pd_result.to_csv(f"{father_path}/{uniprot_id}/{start}_{uniprot_id}_scaffold_info.csv",index = False)
+    # start =  time.strftime("%Y-%m-%d", time.localtime())
+    pd_result.to_csv(f"{father_path}/{uniprot_id}/{uniprot_id}_scaffold_info_20241120.csv",index = False)
 
 
 
@@ -103,11 +103,15 @@ if __name__ == "__main__":
     father_path = args.father_path
     uniprot_ids = os.listdir(father_path )
     for uniprot_id in uniprot_ids:
-        actives_path = os.path.join(father_path,uniprot_id,f'{uniprot_id}_all_active_molecules.sdf')
+        actives_path = os.path.join(father_path,uniprot_id,f'{uniprot_id}_all_active_molecules_new_20241120.sdf')
+        # save_path = f"{father_path}/{uniprot_id}/{start}_{uniprot_id}_scaffold_info_20241120.csv"
+        
         actives = Chem.SDMolSupplier(actives_path)
         seriseID_map_mols = {}
         for mol in actives:
             if mol is not None:
+                if mol.GetProp('_Name').split('_')[1] == 'NoSeriseID':
+                    continue
                 serise = '_'.join(mol.GetProp('_Name').split('_')[:2])
                 if serise not in seriseID_map_mols:
                     seriseID_map_mols[serise] = []
@@ -118,5 +122,6 @@ if __name__ == "__main__":
                 seriseID_map_mols[serise].append(mol)
                 
         result = Parallel(n_jobs=args.njobs,verbose = 40)(delayed(adjustThreshold)(serise_id,molecules) for serise_id,molecules in tqdm(seriseID_map_mols.items(),total = len(seriseID_map_mols)))
+        
         resultToCsv(result,uniprot_id,father_path)
 
