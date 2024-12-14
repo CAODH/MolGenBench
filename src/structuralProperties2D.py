@@ -1,5 +1,4 @@
 import os
-from typing import List
 from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 from joblib import Parallel, delayed
@@ -12,6 +11,46 @@ from rdkit import Chem
 from collections import Counter
 import pandas as pd
 import json
+def getFuncGroup(mol):
+    """"
+    mol: rdkit mol object
+    
+    """
+    try:
+        fgs, _ = mol2frag(mol)
+    except:
+        return []
+    return fgs
+def getAtomType(mol):
+
+    return [ atom.GetSymbol() for atom in mol.GetAtoms()] 
+def getRingType(mol):
+    ring_info = mol.GetRingInfo()
+    ring_type = [len(r) for r in ring_info.AtomRings()]
+    return ring_type
+def getAllTypes(mol):
+    return getFuncGroup(mol) , getAtomType(mol) , getRingType(mol)
+def readMols(file_name):
+    if file_name.endswith('.sdf'):
+        try:
+            mols = Chem.SDMolSupplier(file_name)
+            smiles_list = [Chem.MolToSmiles(mol) for mol in mols if mol is not None]
+        except:
+            print('error file name:',file_name)
+            smiles_list = []
+        if smiles_list == []:
+            print(f'No molecules in {file_name}')
+        return smiles_list
+        
+
+    elif file_name.endswith('.smi') or file_name.endswith('.txt'):
+        smiles_list = [line.strip() for line in open(file_name)]
+        if smiles_list == []:
+            print(f'No molecules in {file_name}')
+        return smiles_list
+    else:
+        raise ValueError('Invalid file format')
+    
 def evalSubTypeDist(ref_groups,generate_group,ref_num_mols,generated_num_mols):
     """
     Calculate the JSD and MAE of subtypes of molecules.
@@ -45,40 +84,16 @@ def evalSubTypeDist(ref_groups,generate_group,ref_num_mols,generated_num_mols):
         # generated_type_dist[k] = generate_func_group[k] / generated_total_num_types
         ref_type_dist[k] = ref_groups[k] / ref_total_num_types
         
-    js = sci_spatial.distance.jensenshannon(np.array(list(ref_type_dist.values())),
-                                            np.array(list(generated_type_dist.values())))
+    ref_type_dist_ = np.array(list(ref_type_dist.values()))
+    ref_type_dist_ = np.where(ref_type_dist_ == 0, 1e-10, ref_type_dist_)
+    generated_type_dist_ = np.array(list(generated_type_dist.values()))
+    generated_type_dist_ = np.where(generated_type_dist_ == 0, 1e-10, generated_type_dist_)
+    js = sci_spatial.distance.jensenshannon(ref_type_dist_,
+                                            generated_type_dist_)
         
     mae = np.abs((np.array(list(ref_type_ratio.values())) - 
                     np.array(list(generated_type_ratio.values())))).mean()
     return mae, generated_type_ratio,js,generated_type_dist,ref_type_ratio,ref_type_dist
-
-
-def getFuncGroup(mol):
-    """"
-    mol: rdkit mol object
-    
-    """
-    try:
-        fgs, _ = mol2frag(mol)
-    except:
-        return []
-    return fgs
-def getAtomType(mol):
-
-    return [ atom.GetSymbol() for atom in mol.GetAtoms()] 
-def getRingType(mol):
-    ring_info = mol.GetRingInfo()
-    ring_type = [len(r) for r in ring_info.AtomRings()]
-    return ring_type
-def getAllTypes(mol):
-    return getFuncGroup(mol) , getAtomType(mol) , getRingType(mol)
-def readMols(file_name):
-    if file_name.endswith('.sdf'):
-        return [Chem.MolToSmiles(mol) for mol in Chem.SDMolSupplier(file_name)]
-    elif file_name.endswith('.smi') or file_name.endswith('.txt'):
-        return [line.strip() for line in open(file_name)]
-    else:
-        raise ValueError('Invalid file format')
 
 def parallelEvalSubTypeDist(ref_file,generated_file,output_file,njobs):
     # load actives and generated molecules      
@@ -217,23 +232,53 @@ def parallelStructuralProperties(file_name, njobs,output_file):
 
 if __name__ == '__main__':
     import argparse
+    import time 
+    from glob import glob
+    
     parser = argparse.ArgumentParser(description='Calculate 2D structural properties of molecules')
     
     parser.add_argument('--ref_file_name', type=str,default='/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757/O14757_result_from_PGMG.txt', help='File name of the SDF or .smi or .txt file')
     parser.add_argument('--generated_file_name', type=str,default='/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757/O14757_Pocket2Mol_generated_molecules.sdf', help='File name of the SDF or .smi or .txt file')
     
-    parser.add_argument('--output_file', type=str,default=None, help='Output file path')
+    parser.add_argument('--output_dir', type=str,default=None, help='/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757')
     parser.add_argument('--njobs', type=int,default = 30, help='num of process to use')
-    parser.add_argument('--file_name', type=str,default = '/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757/O14757_result_from_PGMG.txt', help='File name of the SDF or .smi or .txt file')
+    # parser.add_argument('--file_name', type=str,default = '/home/datahouse1/caoduanhua/MolGens/Evalutions/SBDDBench/TestSamples/O14757/O14757_result_from_PGMG.txt', help='File name of the SDF or .smi or .txt file')
+    parser.add_argument('--data_folder', type=str,default = '/home/datahouse1/caoduanhua/MolGens/SelfConstructedBenchmark/Smiles_min_50_max_inf_Scaffold_50_Serise_20_pocket', help='data folder to preprocess')
     
     args = parser.parse_args()
-    import time 
-    start =  time.strftime("%Y-%m-%d", time.localtime())
+    
+    # start =  time.strftime("%Y-%m-%d", time.localtime())
+    
+    if args.data_folder is not None:
+            
+        for uniprot_id in os.listdir(args.data_folder):
+            os.makedirs(os.path.join(args.output_dir,uniprot_id),exist_ok = True)
+            ref_file_name = f'{args.data_folder}/{uniprot_id}/{uniprot_id}_all_active_molecules_new_20241120.sdf'
+            
+            output_file = os.path.join(args.output_dir,uniprot_id,f'{os.path.splitext(os.path.basename(ref_file_name))[0]}_2D_properties_base.csv')
+            
+            parallelStructuralProperties(ref_file_name, args.njobs,output_file)
+            
+            for file in os.listdir(f'{args.data_folder}/{uniprot_id}'):
+                
+                if 'generated_molecules' in file and 'DeepICL' in file:
+                    generated_file_name = f'{args.data_folder}/{uniprot_id}/{file}'
+                    
+                    generated_file_name = f'{args.data_folder}/{uniprot_id}/{file}'
+                    
+                    output_file = os.path.join(args.output_dir,uniprot_id,f'{os.path.splitext(os.path.basename(generated_file_name))[0]}_2D_properties_base.csv')
 
-    args.output_file = args.output_file if args.output_file is not None else f'{os.path.dirname(args.file_name)}/{start}_2D_properties_base.csv'
-    parallelStructuralProperties(args.ref_file_name, args.njobs,args.output_file)
-    args.output_file =f'{os.path.dirname(args.file_name)}/{start}_2D_properties_JSD_MAE.csv'
-    parallelEvalSubTypeDist(args.ref_file_name,args.generated_file_name,args.output_file,args.njobs)
+                    parallelStructuralProperties(generated_file_name, args.njobs,output_file)
+                    
+                    output_file = os.path.join(args.output_dir,uniprot_id,f'{os.path.splitext(os.path.basename(generated_file_name))[0]}_2D_properties_JSD_MAE.csv')
+
+                    parallelEvalSubTypeDist(ref_file_name,generated_file_name,output_file,args.njobs)
+    else:
+            
+        output_file = os.path.join(args.output_dir,f'{os.path.splitext(os.path.basename(args.generated_file_name))[0]}_2D_properties_base.csv')
+        parallelStructuralProperties(args.ref_file_name, args.njobs,args.output_file)
+        output_file = os.path.join(args.output_dir,f'{os.path.splitext(os.path.basename(args.generated_file_name))[0]}_2D_properties_JSD_MAE.csv')
+        parallelEvalSubTypeDist(args.ref_file_name,args.generated_file_name,args.output_file,args.njobs)
     
     
     
