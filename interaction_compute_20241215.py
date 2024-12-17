@@ -118,20 +118,26 @@ def UniprotInteractions(uniprot_id):
     
     ligand_path_list = glob.glob(os.path.join(benchmark_dir,uniprot_id,'*'))
     for ligand_path_dir in ligand_path_list:
-        if ligand_path_dir in ligand_path_list:
-            if not os.path.isdir(ligand_path_dir):
+        # if ligand_path_dir in ligand_path_list:
+            if not os.path.isdir(ligand_path_dir) or os.path.basename(ligand_path_dir) == 'all_active_molecules':
                 continue
             # /home/datahouse1/caoduanhua/MolGens/SelfConstructedBenchmark/selfGenBench_archive_241203/Q07343/all_active_molecules_new_20241120/Q07343_all_active_molecules_new_20241120_ligprep_glide_sp_pv_duplicate.sdf
             # /home/datahouse1/caoduanhua/MolGens/SelfConstructedBenchmark/selfGenBench_archive_241203/Q07343/SurfGen_generated_molecules/Q07343_all_active_molecules_new_20241120_ligprep_glide_sp_pv_duplicate.sdf
             try:
-                ligand_path = glob.glob(os.path.join(ligand_path_dir,'*_sp_pv_duplicate.sdf'))[0]
+                # print(ligand_path = glob.glob(os.path.join(ligand_path_dir,'*_sp_pv_duplicate.sdf'))[0])
+                try:
+                    ligand_path = glob.glob(os.path.join(ligand_path_dir,'*_sp_pv_duplicate.sdf'))[0]
+                except:
+                    ligand_path = glob.glob(os.path.join(ligand_path_dir,'*_sp_pv.sdf'))[0]
+                print(ligand_path)
                 # ligand_path = os.path.join(benchmark_dir,uniprot_id,f'all_active_molecules_new_20241120/{uniprot_id}_all_active_molecules_new_20241120_ligprep_glide_sp_pv_duplicate.sdf')
                 protein_path = os.path.join(benchmark_dir,uniprot_id,f'{uniprot_id}_prep.pdb')
                 save_dir = os.path.join(root_save_dir,uniprot_id)
                 os.makedirs(save_dir,exist_ok=True)
                 save_path = os.path.join(save_dir,ligand_path.split('/')[-1].replace('.sdf','_interactions.csv'))
                 if os.path.exists(save_path):
-                    return
+                    # return
+                    continue
                 pandas_result = nonBondInteractions(protein_path,ligand_path,interaction_norm_map=None)
                 pandas_result.to_csv(save_path)
             except Exception as e:
