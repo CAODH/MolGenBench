@@ -36,13 +36,23 @@ def read_uniprot_sdf_dir(root_dir: str) -> Dict[str, List[MoleculeRecord]]:
     """
     Traverse a root directory containing multiple UniProt subfolders.
     Each subfolder should contain exactly one .sdf file.
-
     Example structure:
-        root_dir/
+        TestSamples/
+        ├── O14757/
+            ├──Round1/
+                ├── De_novo_Results/
+                │   ├── PocketFlow_generated_molecules/
+                │   │   └── O14757_PocketFlow_generated_molecules.sdf
+                │   └── Hit_to_Lead_Results/
+                        └── Series14139
+                            └── DeleteHit2Lead(CrossDock)_Hit_to_Lead
+                                └── O14757_Series14139_DeleteHit2Lead(CrossDock)_Hit_to_Lead.sdf
         ├── P12345/
-        │   └── gen_ligands.sdf
-        ├── Q67890/
-        │   └── gen_ligands.sdf
+            ├──Round1/
+                ├── De_novo_Results/
+                    └── ...
+                ├── Hit_to_Lead_Results/
+                    └── ...
 
     Args:
         root_dir (str): Path to the root directory.
@@ -58,6 +68,7 @@ def read_uniprot_sdf_dir(root_dir: str) -> Dict[str, List[MoleculeRecord]]:
             continue
 
         uniprot_id = subdir.name
+        
         sdf_files = list(subdir.glob("*.sdf"))
         if not sdf_files:
             continue
