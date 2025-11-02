@@ -50,7 +50,8 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
-
+# temporary files created by test
+*.pkl
 # Translations
 *.mo
 *.pot
