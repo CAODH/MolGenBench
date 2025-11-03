@@ -12,14 +12,9 @@ from joblib import Parallel, delayed
 import argparse
 
 import os
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 import pickle
-# import pandas as pd
-# from pandarallel import pandarallel
-# pandarallel.initialize(nb_workers=30) 
+
 
 
 
@@ -42,7 +37,7 @@ def enumerate_tautomer_and_partial_chirality(smiles):
         # print(len(enumerated_inchi))
         return enumerated_inchi
     except Exception as e:
-        print('Unknow Error:',str(e))
+        print('Unknown Error:',str(e))
         return set()
         
 
@@ -54,7 +49,7 @@ def GetScaffold(smiles):
         # 输出分子骨架的 SMILES
         scaffold_smiles = Chem.MolToSmiles(scaffold)
         return scaffold_smiles
-    except:
+    except Exception as e:
         return 'None'
 
 
@@ -83,7 +78,7 @@ def compute_smiles_scaffold_inchi_map(uniprot_id,active_dir):
         
         for ref_mol in ref_mols:
             if ref_mol is None:
-                print('erro mol in : ',ref_actives_path)
+                print('error mol in : ',ref_actives_path)
                 continue
             frags = Chem.GetMolFrags(ref_mol, asMols=True)
             ref_mol = max(frags, key=lambda x: x.GetNumAtoms())

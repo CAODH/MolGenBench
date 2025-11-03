@@ -1,11 +1,8 @@
 
 ## hit rediscovery metric for molecular generation
-from typing import Dict, Type, Any, List, Optional
-from molgenbench.metrics.base import MetricBase
-from molgenbench.types import MoleculeRecord
+
 ############## raw code ##############
 import rdkit
-from rdkit.Chem import AllChem
 import pandas as pd
 import os
 from rdkit import DataStructs
@@ -18,15 +15,12 @@ from rdkit import Chem
 from rdkit.Chem.Scaffolds import MurckoScaffold
 from rdkit.Chem import Draw
 import pickle
-# 定义一个分子，例如苯甲酸
-smiles = "C1=CC=C(C=C1)C(=O)O"
 import swifter
-# import pandas as pd
-from pandarallel import pandarallel
-pandarallel.initialize(nb_workers=30) 
+
 from rdkit import Chem
 from rdkit.Chem.EnumerateStereoisomers import EnumerateStereoisomers, StereoEnumerationOptions
 from rdkit.Chem.MolStandardize import rdMolStandardize
+
 def enumerate_tautomer_and_partial_chirality(smiles):
     try:
         mol = Chem.MolFromSmiles(smiles)
@@ -154,7 +148,7 @@ for model_name in model_name_list:
                 
                 try:
                     generate_mols = Chem.SDMolSupplier(generate_mol_path)
-                except:
+                except Exception as e:
                     print('Error in ',generate_mol_path)
                     continue
                 for generate_mol in generate_mols:
@@ -177,30 +171,30 @@ for model_name in model_name_list:
         result = pd.DataFrame({'UniprotID':uniprot_id_list ,
                 'Reference_Smiles':uniprot_ref_smiles_list ,
                 'Generated_Smiles':uniprot_gen_smiles_list})
-        result['Reference_Smiles_num']=result['Reference_Smiles'].apply(lambda x:len(x))
+        result['Reference_Smiles_num']=result['Reference_Smiles'].apply(len)
         
         # result['Finded_Smiles'] = result.apply(lambda x:list(set(x.Reference_Smiles).intersection(set(x.Generated_Smiles))),axis = 1)
         result['Finded_Smiles_and_Inchi'] = result.swifter.apply(lambda x:find_smiles_and_inchi(set(x.Reference_Smiles),set(x.Generated_Smiles),x.UniprotID),axis = 1)
         result['Finded_Smiles'] = result['Finded_Smiles_and_Inchi'].apply(lambda x: x[0])
-        result['Finded_Smiles_Num']=result['Finded_Smiles'].apply(lambda x:len(x))
+        result['Finded_Smiles_Num']=result['Finded_Smiles'].apply(len)
         result['Finded_Inchi'] = result['Finded_Smiles_and_Inchi'].apply(lambda x: x[1])
-        result['Finded_Inchi_Num'] = result['Finded_Smiles_and_Inchi'].apply(lambda x: len(x))
+        result['Finded_Inchi_Num'] = result['Finded_Smiles_and_Inchi'].apply(len)
 
         result['Reference_Scaffolds'] = result['Reference_Smiles'].apply(lambda x:list(set([GetScaffold(smiles) for smiles in x])))
         result['Reference_Scaffolds'] = result['Reference_Scaffolds'].apply(lambda x: [_ for _ in x if _ != 'None'])
-        result['Reference_Scaffolds_Num'] = result['Reference_Scaffolds'].apply(lambda x:len(x))
+        result['Reference_Scaffolds_Num'] = result['Reference_Scaffolds'].apply(len)
         
         result['Generated_Scaffolds'] = result['Generated_Smiles'].apply(lambda x:list(set([GetScaffold(smiles) for smiles in x])))
         result['Generated_Scaffolds'] = result['Generated_Scaffolds'].apply(lambda x: [_ for _ in x if _ != 'None'])
-        result['Generated_Scaffolds_Num'] = result['Generated_Scaffolds'].apply(lambda x:len(x))
+        result['Generated_Scaffolds_Num'] = result['Generated_Scaffolds'].apply(len)
         
         
         result['Finded_Scaffolds_and_Inchi'] = result.swifter.apply(lambda x:find_scaffold_and_inchi(set(x.Reference_Scaffolds),set(x.Generated_Scaffolds),x.UniprotID),axis = 1)
         result['Finded_Scaffolds'] = result['Finded_Scaffolds_and_Inchi'].apply(lambda x: x[0])
         # result['Finded_Scaffolds'] = result.apply(lambda x:list(set(x.Reference_Scaffolds).intersection(set(x.Generated_Scaffolds))),axis = 1)
-        result['Finded_Scaffolds_Num'] = result['Finded_Scaffolds'].apply(lambda x:len(x))
+        result['Finded_Scaffolds_Num'] = result['Finded_Scaffolds'].apply(len)
         result['Finded_Scaffolds_Inchi'] = result['Finded_Scaffolds_and_Inchi'].apply(lambda x: x[1])
-        result['Finded_Scaffolds_Inchi_Num'] = result['Finded_Scaffolds_Inchi'].apply(lambda x:len(x))
+        result['Finded_Scaffolds_Inchi_Num'] = result['Finded_Scaffolds_Inchi'].apply(len)
         # 计算hit 到的骨架在所有分子里面占到的比例
         result['Finded_Scaffolds_Frequency_Rate'] =result.apply(lambda x:x.Finded_Scaffolds_Inchi_Num/len(x.Generated_Smiles),axis=1)
         result['Finded_Scaffolds_Rate'] = result['Finded_Scaffolds_Num']/result['Reference_Scaffolds_Num']
@@ -210,7 +204,7 @@ for model_name in model_name_list:
         # save result csv file
         os.makedirs(save_dir,exist_ok=True)
         result.to_csv(os.path.join(save_dir,f'{model_name}.csv'))
-    except Exception as e:
+    except BaseException as e:
         print(f'Error in {model_name}')
         print('Error:',str(e))
         continue

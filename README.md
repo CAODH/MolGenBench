@@ -19,7 +19,7 @@ conda create --name MolGenBench python=3.11
 conda install rdkit
 mamba install seaborn
 pip install --use-pep517 EFGs
-pip install tqdm joblid
+pip install tqdm joblib
 pip install pytest
 
 ```

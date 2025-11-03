@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional, Type
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed
-from molgenbench.types import MoleculeRecord
+from molgenbench.io.types import MoleculeRecord
 import logging
 import traceback
 
