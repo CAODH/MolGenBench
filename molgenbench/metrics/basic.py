@@ -2,9 +2,9 @@ from rdkit import Chem
 from rdkit.Chem import QED, rdMolDescriptors
 
 from molgenbench.io.types import MoleculeRecord
-from molgenbench.metrics.base import Metric
+from molgenbench.metrics.base import MetricBase
 from molgenbench.utils.sascore import compute_sa_score
-class ValidMetric(Metric):
+class ValidMetric(MetricBase):
     name = "Valid"
     def compute(self, record: MoleculeRecord):
         # Check both RDKit parsing and multi-fragment structure
@@ -14,7 +14,7 @@ class ValidMetric(Metric):
             record.valid = '.' not in record.smiles
         return record.valid
 
-class QEDMetric(Metric):
+class QEDMetric(MetricBase):
     name = "QED"
     def compute(self, record: MoleculeRecord):
         if not record.valid:
@@ -24,7 +24,7 @@ class QEDMetric(Metric):
         record.metadata[self.name] = val
         return val
 
-class SAMetric(Metric):
+class SAMetric(MetricBase):
     name = "SA"
     def compute(self, record: MoleculeRecord):
         if not record.valid:
