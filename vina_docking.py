@@ -215,7 +215,7 @@ if __name__ == '__main__':
         prepared_df = pd.read_pickle(prepared_df_path)
     
     logger.info("Docking...")
-    cores = (mp.cpu_count()-5)//8
+    cores = max(1, (mp.cpu_count()-5)//8)
     results = Parallel(n_jobs=cores, verbose = 100)(delayed(process_row)(row) for _, row in prepared_df.iterrows())
     for idx, affinity, docked_path in results:
         prepared_df.at[idx, 'affinity'] = affinity
