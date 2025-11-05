@@ -1,5 +1,4 @@
 import os
-import shutil
 import logging
 import argparse
 import pandas as pd
