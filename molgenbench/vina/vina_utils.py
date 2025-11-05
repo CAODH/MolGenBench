@@ -388,7 +388,6 @@ def get_vina_results(ligand_mol, protein_path, ref_ligand_mol, docking_mode='vin
     
     except Exception as e:
         raise e
-        return None, None
 
 
 def process_ligand(ligand_file, ligand_root, protein_path, ref_ligand_mol, docked_root):
