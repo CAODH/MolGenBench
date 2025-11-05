@@ -3,7 +3,6 @@ import sys
 import shutil
 from pathlib import Path
 import pytest
-import pandas as pd
 from rdkit import Chem
 from joblib import Parallel, delayed
 
