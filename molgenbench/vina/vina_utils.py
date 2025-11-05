@@ -413,7 +413,7 @@ def prepare_output_df(protein_path, ligand_root, ref_ligand_mol, docked_root):
     """
     ligand_files = os.listdir(ligand_root)
     # parallelize the process
-    rows = Parallel(n_jobs=mp.cpu_count()-10)(
+    rows = Parallel(n_jobs=max(1, mp.cpu_count()-10))(
         delayed(process_ligand)(ligand_file, ligand_root, protein_path, ref_ligand_mol, docked_root)
         for ligand_file in ligand_files
     )
