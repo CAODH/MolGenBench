@@ -1,8 +1,6 @@
-import os
 import numpy as np
-import pandas as pd
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Dict, Any
 from rdkit import Chem
 from rdkit.Chem.rdchem import Mol
 
@@ -36,8 +34,8 @@ class PoseBusterMetric(MetricBase):
         Run PoseBusters on an SDF/PDB input pair and store results to CSV.
 
         Args:
-            records: List of MoleculeRecord objects
-            cond_file: Path to receptor PDB file (used for context)
+            records: MoleculeRecord object
+            mol_cond: Path to receptor PDB file (used for context)
         """
         
         mol_pred = record.rdkit_mol
