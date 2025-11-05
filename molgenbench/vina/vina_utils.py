@@ -4,7 +4,6 @@ import string
 import tempfile
 import subprocess
 import contextlib
-import numpy as np
 import pandas as pd
 import multiprocessing as mp
 
