@@ -182,7 +182,7 @@ class VinaDock(object):
     
     def _max_min_pdb(self, pdb, buffer):
         with open(pdb, 'r') as f: 
-            lines = [l for l in f.readlines() if l.startswith('ATOM') or l.startswith('HEATATM')]
+            lines = [l for l in f.readlines() if l.startswith('ATOM') or l.startswith('HETATM')]
             xs = [float(l[31:39]) for l in lines]
             ys = [float(l[39:47]) for l in lines]
             zs = [float(l[47:55]) for l in lines]
