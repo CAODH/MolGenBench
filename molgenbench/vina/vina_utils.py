@@ -220,7 +220,8 @@ class VinaDock(object):
         }
 
     def check_pdbqt_str(self, fn):
-        lig_str = open(fn, 'r').readlines()
+        with open(fn, 'r') as f:
+            lig_str = f.readlines()
         # print(fn)
         for s in lig_str:
             if s.strip().endswith(' Ru'):
