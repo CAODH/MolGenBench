@@ -10,6 +10,14 @@ import traceback
 # 全局注册表
 METRIC_REGISTRY: Dict[str, Type["MetricBase"]] = {}
 
+
+class Metric(ABC):
+    name: str
+
+    @abstractmethod
+    def compute(self, records, **kwargs):
+        pass
+
 class MetricBase(ABC):
     """所有指标的抽象基类，带自动注册、异常捕获、并行计算能力。"""
 

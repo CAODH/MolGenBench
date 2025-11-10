@@ -5,7 +5,8 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.DataStructs import TanimotoSimilarity
 
-from molgenbench.metrics.base import Metric
+from molgenbench.metrics.base import MetricBase, Metric
+from molgenbench.metrics.basic import is_valid
 from molgenbench.io.types import MoleculeRecord
 
 class UniquenessMetric(Metric):
@@ -15,7 +16,7 @@ class UniquenessMetric(Metric):
     name = "Uniqueness"
 
     def compute(self, records: List[MoleculeRecord]) -> Dict[str, float]:
-        smiles_list = [r.smiles for r in records if (r.valid == True and r.smiles)]
+        smiles_list = [r.smiles for r in records if is_valid(r.rdkit_mol)]
         if not smiles_list:
             return {self.name: None}
         unique_smiles = set(smiles_list)
@@ -50,7 +51,7 @@ class DiversityMetric(Metric):
     def compute(self, records: List[MoleculeRecord]) -> Dict[str, float]:
         """Compute the diversity value for all valid molecules."""
         # Extract valid SMILES
-        smiles_list = [r.smiles for r in records if (r.valid == True and r.smiles)]
+        smiles_list = [r.smiles for r in records if is_valid(r.rdkit_mol)]
         mols = [Chem.MolFromSmiles(smi) for smi in smiles_list]
         mols = [mol for mol in mols if mol is not None]
 

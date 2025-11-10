@@ -4,7 +4,8 @@ from typing import Dict, Any
 from rdkit import Chem
 from rdkit.Chem.rdchem import Mol
 
-from molgenbench.metrics.base import MetricBase
+from molgenbench.metrics.base import MetricBase, Metric
+from molgenbench.metrics.basic import is_valid
 from molgenbench.io.types import MoleculeRecord
 
 from posebusters import PoseBusters
@@ -13,7 +14,7 @@ from spyrmsd import molecule
 from spyrmsd import rmsd as spy_rmsd
 
 
-class PoseBusterMetric(MetricBase):
+class PoseBusterMetric(Metric):
     """
     Metric wrapper for PoseBusters evaluation.
     Runs PoseBusters on predicted ligand poses against the true reference
@@ -28,7 +29,6 @@ class PoseBusterMetric(MetricBase):
     def compute(
         self,
         record: MoleculeRecord,
-        mol_cond: Path | str,
     ):
         """
         Run PoseBusters on an SDF/PDB input pair and store results to CSV.
@@ -39,18 +39,27 @@ class PoseBusterMetric(MetricBase):
         """
         
         mol_pred = record.rdkit_mol
-        df = self.buster.bust(
-            mol_pred=[mol_pred],
-            mol_true=None,
-            mol_cond=mol_cond,
-        ).droplevel("file")
+        if not is_valid(mol_pred):
+            record.metadata[self.name] = None
+            return None
         
-        posebuster_results = df.iloc[0].to_dict()
+        mol_cond = record.metadata.get("protein_path", None)
+        
+        try:
+            df = self.buster.bust(
+                mol_pred=mol_pred,
+                mol_true=None,
+                mol_cond=mol_cond,
+            ).droplevel("file")
+            
+            posebuster_results = df.iloc[0].to_dict()
+        except:
+            posebuster_results = {}
         record.metadata[self.name] = posebuster_results
         return posebuster_results
     
 
-class StrainEnergyMetrics(MetricBase):
+class StrainEnergyMetrics(Metric):
     """
     Compute strain energy metrics for a given molecule using PoseCheck.
     Outputs total strain energy and per-atom strain energy.
@@ -67,7 +76,7 @@ class StrainEnergyMetrics(MetricBase):
         strain = None
         mol = record.rdkit_mol
         
-        if mol is None:
+        if not is_valid(mol):
             record.metadata[self.name] = strain
             return record.metadata[self.name]
         
@@ -79,10 +88,10 @@ class StrainEnergyMetrics(MetricBase):
             strain = None
 
         record.metadata[self.name] = strain
-        return record.metadata[self.name]
+        return strain
     
 
-class RMSDMetric(MetricBase):
+class RMSDMetric(Metric):
     """
     Compute the redocking RMSD between a predicted and a reference molecule.
 
