@@ -16,11 +16,15 @@ sbdd Benchmark and evalation metrics
 # Environment Setup
 ```bash
 conda create --name MolGenBench python=3.11
-conda install rdkit
-mamba install seaborn
+mamba install -c conda-forge rdkit numpy pandas seaborn scipy -y
 pip install --use-pep517 EFGs
 pip install tqdm joblib
 pip install pytest
+pip install swifter
+pip install medchem
+mamba install lilly-medchem-rules
+pip install posecheck
+
 
 ```
 

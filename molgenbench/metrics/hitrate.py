@@ -2,18 +2,14 @@
 ## hit rediscovery metric for molecular generation
 
 ############## raw code ##############
-import rdkit
 import pandas as pd
 import os
-from rdkit import DataStructs
-from rdkit.ML.Cluster import Butina
 from rdkit import Chem
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from rdkit import Chem
 from rdkit.Chem.Scaffolds import MurckoScaffold
-from rdkit.Chem import Draw
 import pickle
 import swifter
 
