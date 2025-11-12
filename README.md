@@ -25,6 +25,19 @@ pip install medchem
 mamba install lilly-medchem-rules
 pip install posecheck
 
+pip install posebusters spyrmsd
+
+# for vina docking
+pip install meeko==0.1.dev3 scipy pdb2pqr vina
+python -m pip install git+https://github.com/Valdes-Tresanco-MS/AutoDockTools_py3
+
+# for posecheck evaluation
+git clone https://github.com/cch1999/posecheck.git
+cd posecheck
+git checkout 57a1938  # the calculation of strain energy used in our paper
+pip install -e .
+pip install -r requirements.txt
+mamba install -c mx reduce
 
 ```
 
