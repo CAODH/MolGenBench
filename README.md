@@ -23,7 +23,6 @@ pip install pytest
 pip install swifter
 pip install medchem
 mamba install lilly-medchem-rules
-pip install posecheck
 
 pip install posebusters spyrmsd
 
