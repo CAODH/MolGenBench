@@ -23,7 +23,7 @@ pip install pytest
 pip install swifter
 pip install medchem
 mamba install lilly-medchem-rules
-
+mamba install openbabel
 pip install posebusters spyrmsd
 
 # for vina docking
