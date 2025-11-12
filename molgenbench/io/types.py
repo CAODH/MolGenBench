@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 from pathlib import Path
+from rdkit import Chem
 
 @dataclass
 class MoleculeRecord:
@@ -11,7 +12,8 @@ class MoleculeRecord:
     """
     id: str
     smiles: str
-    rdkit_mol: Optional[Any] = None
+    rdkit_mol: Optional[Chem.Mol] = None
+    num_rotatable_bonds: Optional[int] = None
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     # Optional validity flag (set after ValidMetric)

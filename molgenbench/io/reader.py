@@ -4,7 +4,10 @@ from rdkit import Chem
 from molgenbench.io.types import MoleculeRecord
 
 
-def read_sdf_file(path: Path, source_name: str = "") -> List[MoleculeRecord]:
+def read_sdf_to_records(
+    path: Path,
+    protein_path: str
+) -> List[MoleculeRecord]:
     """
     Read one SDF file and convert all molecules into MoleculeRecord objects.
 
@@ -21,13 +24,52 @@ def read_sdf_file(path: Path, source_name: str = "") -> List[MoleculeRecord]:
 
     for i, mol in enumerate(suppl):
         smiles = Chem.MolToSmiles(mol) if mol is not None else None
+        num_rotatable_bonds = Chem.rdMolDescriptors.CalcNumRotatableBonds(mol) if mol is not None else None
         record = MoleculeRecord(
-            id=f"{source_name}_{i}",
+            id=mol.GetProp("_Name"),
             smiles=smiles,
             rdkit_mol=mol,
-            metadata={"uniprot_id": source_name, "source_file": str(path)},
+            num_rotatable_bonds=num_rotatable_bonds,
+            metadata={
+                "source_file": str(path),
+                "protein_path": protein_path, 
+            },
         )
         records.append(record)
+
+    return records
+
+
+def attach_docked_molecules(
+    records: List[MoleculeRecord],
+    docked_sdf_path,
+) -> List[MoleculeRecord]:
+    """
+    Try to attach docked molecules to existing MoleculeRecords via '_Name' match.
+    If docked_sdf_path does not exist, silently skip.
+
+    Args:
+        records: List of MoleculeRecord (from read_sdf_file)
+        docked_sdf_path: Path to vina-docked SDF file
+
+    Returns:
+        Updated list of MoleculeRecords with `metadata["docked_mol"]` if matched.
+    """
+    docked_sdf_path = Path(docked_sdf_path)
+    if not docked_sdf_path.exists():
+        return records  # nothing to attach
+
+    docked_suppl = Chem.SDMolSupplier(str(docked_sdf_path))
+    docked_dict = {
+        mol.GetProp("_Name"): mol
+        for mol in docked_suppl
+        if mol is not None
+    }
+
+    for record in records:
+        name = record.id
+        if name in docked_dict:
+            record.metadata["docked_mol"] = docked_dict[name]
 
     return records
 
@@ -36,13 +78,23 @@ def read_uniprot_sdf_dir(root_dir: str) -> Dict[str, List[MoleculeRecord]]:
     """
     Traverse a root directory containing multiple UniProt subfolders.
     Each subfolder should contain exactly one .sdf file.
-
     Example structure:
-        root_dir/
+        TestSamples/
+        ├── O14757/
+            ├──Round1/
+                ├── De_novo_Results/
+                │   ├── PocketFlow_generated_molecules/
+                │   │   └── O14757_PocketFlow_generated_molecules.sdf
+                │   └── Hit_to_Lead_Results/
+                        └── Series14139
+                            └── DeleteHit2Lead(CrossDock)_Hit_to_Lead
+                                └── O14757_Series14139_DeleteHit2Lead(CrossDock)_Hit_to_Lead.sdf
         ├── P12345/
-        │   └── gen_ligands.sdf
-        ├── Q67890/
-        │   └── gen_ligands.sdf
+            ├──Round1/
+                ├── De_novo_Results/
+                    └── ...
+                ├── Hit_to_Lead_Results/
+                    └── ...
 
     Args:
         root_dir (str): Path to the root directory.
@@ -58,13 +110,14 @@ def read_uniprot_sdf_dir(root_dir: str) -> Dict[str, List[MoleculeRecord]]:
             continue
 
         uniprot_id = subdir.name
+        
         sdf_files = list(subdir.glob("*.sdf"))
         if not sdf_files:
             continue
 
         # take the first SDF file by default
         sdf_file = sdf_files[0]
-        records = read_sdf_file(sdf_file, source_name=uniprot_id)
+        records = read_sdf_to_records(sdf_file, source_name=uniprot_id)
         all_records[uniprot_id] = records
 
     return all_records
