@@ -1,0 +1,1024 @@
+Q92769_Sries33292_idx-in-all-actives-306
+     RDKit          3D
+
+ 54 55  0  0  0  0  0  0  0  0999 V2000
+   20.6794  -17.6024   -0.9979 O   0  0  0  0  0  0  0  0  0  0  0  0
+   21.1366  -18.6645   -0.5849 C   0  0  0  0  0  0  0  0  0  0  0  0
+   22.5637  -18.7470   -0.0514 C   0  0  0  0  0  0  0  0  0  0  0  0
+   23.5344  -17.7212   -0.6619 C   0  0  0  0  0  0  0  0  0  0  0  0
+   24.9663  -17.9760   -0.1759 C   0  0  0  0  0  0  0  0  0  0  0  0
+   25.9327  -16.8372   -0.5195 C   0  0  0  0  0  0  0  0  0  0  0  0
+   27.3544  -17.1508   -0.0193 C   0  0  0  0  0  0  0  0  0  0  0  0
+   28.3690  -15.9819   -0.0651 C   0  0  2  0  0  0  0  0  0  0  0  0
+   29.7060  -16.5132    0.2021 N   0  0  0  0  0  0  0  0  0  0  0  0
+   30.6268  -16.8792   -0.7014 C   0  0  0  0  0  0  0  0  0  0  0  0
+   30.4472  -16.7564   -1.9145 O   0  0  0  0  0  0  0  0  0  0  0  0
+   31.8598  -17.6491   -0.1559 C   0  0  1  0  0  0  0  0  0  0  0  0
+   33.1299  -17.4824   -0.9949 C   0  0  0  0  0  0  0  0  0  0  0  0
+   34.0049  -16.5206   -0.2040 C   0  0  0  0  0  0  0  0  0  0  0  0
+   33.4554  -16.5145    1.2188 C   0  0  0  0  0  0  0  0  0  0  0  0
+   33.9923  -16.0167    2.2022 O   0  0  0  0  0  0  0  0  0  0  0  0
+   32.2874  -17.1731    1.1656 N   0  0  0  0  0  0  0  0  0  0  0  0
+   27.9790  -14.8396    0.9118 C   0  0  0  0  0  0  0  0  0  0  0  0
+   27.1655  -14.0026    0.5155 O   0  0  0  0  0  0  0  0  0  0  0  0
+   28.5419  -14.8479    2.1434 N   0  0  0  0  0  0  0  0  0  0  0  0
+   28.4238  -13.9126    3.1868 C   0  0  0  0  0  0  0  0  0  0  0  0
+   27.9215  -12.6114    3.0305 C   0  0  0  0  0  0  0  0  0  0  0  0
+   27.8874  -11.7460    4.1206 C   0  0  0  0  0  0  0  0  0  0  0  0
+   28.3386  -12.1779    5.3657 C   0  0  0  0  0  0  0  0  0  0  0  0
+   28.8451  -13.4649    5.5273 C   0  0  0  0  0  0  0  0  0  0  0  0
+   28.8948  -14.3268    4.4359 C   0  0  0  0  0  0  0  0  0  0  0  0
+   20.4033  -19.7794   -0.5398 N   0  0  0  0  0  0  0  0  0  0  0  0
+   19.0874  -19.7129   -0.9979 O   0  0  0  0  0  0  0  0  0  0  0  0
+   22.9509  -19.7540   -0.2074 H   0  0  0  0  0  0  0  0  0  0  0  0
+   22.5125  -18.5784    1.0246 H   0  0  0  0  0  0  0  0  0  0  0  0
+   23.2254  -16.7124   -0.3791 H   0  0  0  0  0  0  0  0  0  0  0  0
+   23.5112  -17.7655   -1.7528 H   0  0  0  0  0  0  0  0  0  0  0  0
+   25.3338  -18.9129   -0.5978 H   0  0  0  0  0  0  0  0  0  0  0  0
+   24.9598  -18.1126    0.9077 H   0  0  0  0  0  0  0  0  0  0  0  0
+   25.5561  -15.9193   -0.0682 H   0  0  0  0  0  0  0  0  0  0  0  0
+   25.9518  -16.6710   -1.5977 H   0  0  0  0  0  0  0  0  0  0  0  0
+   27.7415  -17.9821   -0.6122 H   0  0  0  0  0  0  0  0  0  0  0  0
+   27.3117  -17.5357    1.0023 H   0  0  0  0  0  0  0  0  0  0  0  0
+   28.3628  -15.5555   -1.0704 H   0  0  0  0  0  0  0  0  0  0  0  0
+   29.8874  -16.7626    1.1721 H   0  0  0  0  0  0  0  0  0  0  0  0
+   31.5694  -18.6971   -0.0592 H   0  0  0  0  0  0  0  0  0  0  0  0
+   33.6375  -18.4468   -1.0587 H   0  0  0  0  0  0  0  0  0  0  0  0
+   32.9651  -17.1614   -2.0251 H   0  0  0  0  0  0  0  0  0  0  0  0
+   35.0602  -16.7925   -0.2277 H   0  0  0  0  0  0  0  0  0  0  0  0
+   33.9103  -15.5053   -0.5899 H   0  0  0  0  0  0  0  0  0  0  0  0
+   31.7084  -17.3129    1.9881 H   0  0  0  0  0  0  0  0  0  0  0  0
+   29.1170  -15.6506    2.3854 H   0  0  0  0  0  0  0  0  0  0  0  0
+   27.5806  -12.2436    2.0759 H   0  0  0  0  0  0  0  0  0  0  0  0
+   27.5129  -10.7402    4.0009 H   0  0  0  0  0  0  0  0  0  0  0  0
+   28.3108  -11.5036    6.2092 H   0  0  0  0  0  0  0  0  0  0  0  0
+   29.2178  -13.7917    6.4877 H   0  0  0  0  0  0  0  0  0  0  0  0
+   29.3176  -15.3130    4.5678 H   0  0  0  0  0  0  0  0  0  0  0  0
+   20.6674  -20.6815   -0.1635 H   0  0  0  0  0  0  0  0  0  0  0  0
+   18.5573  -19.8171   -0.1977 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  2  0
+  2  3  1  0
+  2 27  1  0
+  3  4  1  0
+  3 29  1  0
+  3 30  1  0
+  4  5  1  0
+  4 31  1  0
+  4 32  1  0
+  5  6  1  0
+  5 33  1  0
+  5 34  1  0
+  6  7  1  0
+  6 35  1  0
+  6 36  1  0
+  7  8  1  0
+  7 37  1  0
+  7 38  1  0
+  8  9  1  0
+  8 18  1  0
+  8 39  1  6
+  9 10  1  0
+  9 40  1  0
+ 10 11  2  0
+ 10 12  1  0
+ 12 13  1  0
+ 12 17  1  0
+ 12 41  1  1
+ 13 14  1  0
+ 13 42  1  0
+ 13 43  1  0
+ 14 15  1  0
+ 14 44  1  0
+ 14 45  1  0
+ 15 16  2  0
+ 15 17  1  0
+ 17 46  1  0
+ 18 19  2  0
+ 18 20  1  0
+ 20 21  1  0
+ 20 47  1  0
+ 21 22  2  0
+ 21 26  1  0
+ 22 23  1  0
+ 22 48  1  0
+ 23 24  2  0
+ 23 49  1  0
+ 24 25  1  0
+ 24 50  1  0
+ 25 26  2  0
+ 25 51  1  0
+ 26 52  1  0
+ 27 28  1  0
+ 27 53  1  0
+ 28 54  1  0
+M  END
+>  <s_epik_Chemistry_Notes>  (1) 
+This compound has a N-S or N-O group and may undergo hydrolysis at high or low pH.
+
+>  <s_epik_cmdline>  (1) 
+J2VwaWtfcHl0aG9uJywgJy1waHQnLCAnMi4wJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzUwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+>  <s_epik_input>  (1) 
+W09IXVtOSF1DKD1PKVtDSDJdW0NIMl1bQ0gyXVtDSDJdW0NIMl1bQ0BIXShbTkhdQyg9TylbQ0BIXTFbQ0gyXVtDSDJdQyg9TylbTkhdMSlDKD1PKVtOSF1jMltjSF1bY0hdW2NIXVtjSF1bY0hdMg==
+
+>  <s_i_glide_gridfile>  (1) 
+Q92769_Sries18355_Sries63329_grid
+
+>  <s_lp_Force_Field>  (1) 
+S-OPLS
+
+>  <s_lp_Variant>  (1) 
+Q92769_Sries33292_idx-in-all-actives-306-1
+
+>  <s_m_source_file>  (1) 
+/home/fanzhehuan/myprojects/selfGenBench/Smiles_min_50_max_inf_Scaffold_50_Serise_20_pocket/Q92769/Q92769_all_active_molecules_new_20241120.sdf
+
+>  <s_sd_Affinity_Type>  (1) 
+IC50
+
+>  <s_sd_Affinity_Unit>  (1) 
+nM
+
+>  <r_epik_Charging_Adjusted_Penalty>  (1) 
+0
+
+>  <r_epik_Ionization_Penalty>  (1) 
+0.0037000000000000002
+
+>  <r_epik_Ionization_Penalty_Charging>  (1) 
+0
+
+>  <r_epik_Ionization_Penalty_Neutral>  (1) 
+0.0037000000000000002
+
+>  <r_epik_State_Penalty>  (1) 
+-0
+
+>  <r_glide_res:A100_Eint>  (1) 
+-0.068310503473103606
+
+>  <r_glide_res:A100_coul>  (1) 
+0.025754951904184201
+
+>  <r_glide_res:A100_dist>  (1) 
+5.9281231480013501
+
+>  <r_glide_res:A100_hbond>  (1) 
+0
+
+>  <r_glide_res:A100_vdw>  (1) 
+-0.094065455377287804
+
+>  <r_glide_res:A101_Eint>  (1) 
+0.052296267484945799
+
+>  <r_glide_res:A101_coul>  (1) 
+0.084137331843311097
+
+>  <r_glide_res:A101_dist>  (1) 
+9.2380954254801999
+
+>  <r_glide_res:A101_hbond>  (1) 
+0
+
+>  <r_glide_res:A101_vdw>  (1) 
+-0.031841064358365298
+
+>  <r_glide_res:A102_Eint>  (1) 
+0.16289655520712301
+
+>  <r_glide_res:A102_coul>  (1) 
+0.224485746021894
+
+>  <r_glide_res:A102_dist>  (1) 
+6.9780067411624502
+
+>  <r_glide_res:A102_hbond>  (1) 
+0
+
+>  <r_glide_res:A102_vdw>  (1) 
+-0.061589190814771197
+
+>  <r_glide_res:A103_Eint>  (1) 
+-2.5354590803741002
+
+>  <r_glide_res:A103_coul>  (1) 
+0.55757182291585405
+
+>  <r_glide_res:A103_dist>  (1) 
+2.98147087398138
+
+>  <r_glide_res:A103_hbond>  (1) 
+0
+
+>  <r_glide_res:A103_vdw>  (1) 
+-3.0930309032899501
+
+>  <r_glide_res:A104_Eint>  (1) 
+-29.366131302028101
+
+>  <r_glide_res:A104_coul>  (1) 
+-24.928037238859101
+
+>  <r_glide_res:A104_dist>  (1) 
+1.82293674766033
+
+>  <r_glide_res:A104_hbond>  (1) 
+-0.45419417452095001
+
+>  <r_glide_res:A104_vdw>  (1) 
+-3.9838998886481298
+
+>  <r_glide_res:A105_Eint>  (1) 
+-0.45158665893667299
+
+>  <r_glide_res:A105_coul>  (1) 
+-0.24258012037222201
+
+>  <r_glide_res:A105_dist>  (1) 
+5.5581162491322704
+
+>  <r_glide_res:A105_hbond>  (1) 
+0
+
+>  <r_glide_res:A105_vdw>  (1) 
+-0.209006538564452
+
+>  <r_glide_res:A106_Eint>  (1) 
+-0.15012915575014699
+
+>  <r_glide_res:A106_coul>  (1) 
+0.00122212853304232
+
+>  <r_glide_res:A106_dist>  (1) 
+5.0916148841238504
+
+>  <r_glide_res:A106_hbond>  (1) 
+0
+
+>  <r_glide_res:A106_vdw>  (1) 
+-0.151351284283189
+
+>  <r_glide_res:A108_Eint>  (1) 
+-0.034915946292243802
+
+>  <r_glide_res:A108_coul>  (1) 
+-0.016507958272630002
+
+>  <r_glide_res:A108_dist>  (1) 
+9.5221880466036808
+
+>  <r_glide_res:A108_hbond>  (1) 
+0
+
+>  <r_glide_res:A108_vdw>  (1) 
+-0.018407988019613901
+
+>  <r_glide_res:A144_Eint>  (1) 
+0.0951974650061225
+
+>  <r_glide_res:A144_coul>  (1) 
+0.29068483452605498
+
+>  <r_glide_res:A144_dist>  (1) 
+4.5665378894947901
+
+>  <r_glide_res:A144_hbond>  (1) 
+0
+
+>  <r_glide_res:A144_vdw>  (1) 
+-0.19548736951993301
+
+>  <r_glide_res:A145_Eint>  (1) 
+-1.7588156537453801
+
+>  <r_glide_res:A145_coul>  (1) 
+-0.77659716205852902
+
+>  <r_glide_res:A145_dist>  (1) 
+2.2028119536745998
+
+>  <r_glide_res:A145_hbond>  (1) 
+0
+
+>  <r_glide_res:A145_vdw>  (1) 
+-0.98221849168684805
+
+>  <r_glide_res:A146_Eint>  (1) 
+-1.09363339450369
+
+>  <r_glide_res:A146_coul>  (1) 
+0.59830941438444796
+
+>  <r_glide_res:A146_dist>  (1) 
+1.8408030511701701
+
+>  <r_glide_res:A146_hbond>  (1) 
+0
+
+>  <r_glide_res:A146_vdw>  (1) 
+-1.6919428088881401
+
+>  <r_glide_res:A147_Eint>  (1) 
+0.041420616169115201
+
+>  <r_glide_res:A147_coul>  (1) 
+0.067226708961902498
+
+>  <r_glide_res:A147_dist>  (1) 
+6.8329174978176601
+
+>  <r_glide_res:A147_hbond>  (1) 
+0
+
+>  <r_glide_res:A147_vdw>  (1) 
+-0.0258060927927872
+
+>  <r_glide_res:A148_Eint>  (1) 
+1.52721691017053
+
+>  <r_glide_res:A148_coul>  (1) 
+1.5471276435744901
+
+>  <r_glide_res:A148_dist>  (1) 
+8.7177965373503898
+
+>  <r_glide_res:A148_hbond>  (1) 
+0
+
+>  <r_glide_res:A148_vdw>  (1) 
+-0.019910733403964698
+
+>  <r_glide_res:A152_Eint>  (1) 
+-0.0075717571927147202
+
+>  <r_glide_res:A152_coul>  (1) 
+0.0271534442963637
+
+>  <r_glide_res:A152_dist>  (1) 
+9.0145461511671101
+
+>  <r_glide_res:A152_hbond>  (1) 
+0
+
+>  <r_glide_res:A152_vdw>  (1) 
+-0.034725201489078497
+
+>  <r_glide_res:A153_Eint>  (1) 
+-0.116412811062112
+
+>  <r_glide_res:A153_coul>  (1) 
+0.10694563053933499
+
+>  <r_glide_res:A153_dist>  (1) 
+5.2663981183335196
+
+>  <r_glide_res:A153_hbond>  (1) 
+0
+
+>  <r_glide_res:A153_vdw>  (1) 
+-0.22335844160144699
+
+>  <r_glide_res:A154_Eint>  (1) 
+-3.0572083075044398
+
+>  <r_glide_res:A154_coul>  (1) 
+-0.83209483139509699
+
+>  <r_glide_res:A154_dist>  (1) 
+2.3636770714473498
+
+>  <r_glide_res:A154_hbond>  (1) 
+0
+
+>  <r_glide_res:A154_vdw>  (1) 
+-2.2251134761093398
+
+>  <r_glide_res:A155_Eint>  (1) 
+-6.1692482590582802
+
+>  <r_glide_res:A155_coul>  (1) 
+-0.220259449989992
+
+>  <r_glide_res:A155_dist>  (1) 
+2.6255745204600198
+
+>  <r_glide_res:A155_hbond>  (1) 
+0
+
+>  <r_glide_res:A155_vdw>  (1) 
+-5.9489888090682896
+
+>  <r_glide_res:A156_Eint>  (1) 
+-0.74207647624610296
+
+>  <r_glide_res:A156_coul>  (1) 
+-0.271582178124118
+
+>  <r_glide_res:A156_dist>  (1) 
+3.4161073244643698
+
+>  <r_glide_res:A156_hbond>  (1) 
+0
+
+>  <r_glide_res:A156_vdw>  (1) 
+-0.47049429812198501
+
+>  <r_glide_res:A157_Eint>  (1) 
+-0.20232198884580399
+
+>  <r_glide_res:A157_coul>  (1) 
+-0.15103666019042999
+
+>  <r_glide_res:A157_dist>  (1) 
+8.6301226570220599
+
+>  <r_glide_res:A157_hbond>  (1) 
+0
+
+>  <r_glide_res:A157_vdw>  (1) 
+-0.0512853286553746
+
+>  <r_glide_res:A181_Eint>  (1) 
+5.9167422051204603
+
+>  <r_glide_res:A181_coul>  (1) 
+6.8631853973403096
+
+>  <r_glide_res:A181_dist>  (1) 
+2.9462549369598601
+
+>  <r_glide_res:A181_hbond>  (1) 
+0
+
+>  <r_glide_res:A181_vdw>  (1) 
+-0.94644319221984197
+
+>  <r_glide_res:A182_Eint>  (1) 
+-0.64734884869526499
+
+>  <r_glide_res:A182_coul>  (1) 
+-0.42633966390245398
+
+>  <r_glide_res:A182_dist>  (1) 
+4.8914746120372401
+
+>  <r_glide_res:A182_hbond>  (1) 
+0
+
+>  <r_glide_res:A182_vdw>  (1) 
+-0.22100918479281101
+
+>  <r_glide_res:A183_Eint>  (1) 
+-0.54826246917660204
+
+>  <r_glide_res:A183_coul>  (1) 
+1.7098176977793
+
+>  <r_glide_res:A183_dist>  (1) 
+2.9353555197583701
+
+>  <r_glide_res:A183_hbond>  (1) 
+0
+
+>  <r_glide_res:A183_vdw>  (1) 
+-2.2580801669558999
+
+>  <r_glide_res:A184_Eint>  (1) 
+-0.30577994186792401
+
+>  <r_glide_res:A184_coul>  (1) 
+-0.208775875786117
+
+>  <r_glide_res:A184_dist>  (1) 
+6.5512994165370504
+
+>  <r_glide_res:A184_hbond>  (1) 
+0
+
+>  <r_glide_res:A184_vdw>  (1) 
+-0.097004066081807797
+
+>  <r_glide_res:A186_Eint>  (1) 
+-1.4244475982253899
+
+>  <r_glide_res:A186_coul>  (1) 
+-1.37733007314084
+
+>  <r_glide_res:A186_dist>  (1) 
+7.37844801011068
+
+>  <r_glide_res:A186_hbond>  (1) 
+0
+
+>  <r_glide_res:A186_vdw>  (1) 
+-0.047117525084546599
+
+>  <r_glide_res:A205_Eint>  (1) 
+-1.58672553583255
+
+>  <r_glide_res:A205_coul>  (1) 
+-1.5562611293911
+
+>  <r_glide_res:A205_dist>  (1) 
+8.7489217581635899
+
+>  <r_glide_res:A205_hbond>  (1) 
+0
+
+>  <r_glide_res:A205_vdw>  (1) 
+-0.030464406441449099
+
+>  <r_glide_res:A208_Eint>  (1) 
+1.16896430821761
+
+>  <r_glide_res:A208_coul>  (1) 
+1.20868251127682
+
+>  <r_glide_res:A208_dist>  (1) 
+8.0383083234232409
+
+>  <r_glide_res:A208_hbond>  (1) 
+0
+
+>  <r_glide_res:A208_vdw>  (1) 
+-0.0397182030592029
+
+>  <r_glide_res:A209_Eint>  (1) 
+-0.39638862901515398
+
+>  <r_glide_res:A209_coul>  (1) 
+-0.145809903886678
+
+>  <r_glide_res:A209_dist>  (1) 
+5.9601646576668204
+
+>  <r_glide_res:A209_hbond>  (1) 
+0
+
+>  <r_glide_res:A209_vdw>  (1) 
+-0.25057872512847601
+
+>  <r_glide_res:A210_Eint>  (1) 
+-4.5050673145175502
+
+>  <r_glide_res:A210_coul>  (1) 
+-0.33063986223521202
+
+>  <r_glide_res:A210_dist>  (1) 
+2.7393033917083298
+
+>  <r_glide_res:A210_hbond>  (1) 
+0
+
+>  <r_glide_res:A210_vdw>  (1) 
+-4.1744274522823401
+
+>  <r_glide_res:A211_Eint>  (1) 
+-0.32517847894951502
+
+>  <r_glide_res:A211_coul>  (1) 
+-0.100551731984105
+
+>  <r_glide_res:A211_dist>  (1) 
+5.4781534916482002
+
+>  <r_glide_res:A211_hbond>  (1) 
+0
+
+>  <r_glide_res:A211_vdw>  (1) 
+-0.22462674696540999
+
+>  <r_glide_res:A212_Eint>  (1) 
+-0.11433239534616101
+
+>  <r_glide_res:A212_coul>  (1) 
+-0.083552970424879996
+
+>  <r_glide_res:A212_dist>  (1) 
+8.2588150168669401
+
+>  <r_glide_res:A212_hbond>  (1) 
+0
+
+>  <r_glide_res:A212_vdw>  (1) 
+-0.0307794249212812
+
+>  <r_glide_res:A265_Eint>  (1) 
+0.17868172238781399
+
+>  <r_glide_res:A265_coul>  (1) 
+0.34257802873311399
+
+>  <r_glide_res:A265_dist>  (1) 
+3.9225608877625402
+
+>  <r_glide_res:A265_hbond>  (1) 
+0
+
+>  <r_glide_res:A265_vdw>  (1) 
+-0.1638963063453
+
+>  <r_glide_res:A269_Eint>  (1) 
+9.1515004583290001
+
+>  <r_glide_res:A269_coul>  (1) 
+10.1188560859314
+
+>  <r_glide_res:A269_dist>  (1) 
+3.0060358851798998
+
+>  <r_glide_res:A269_hbond>  (1) 
+0
+
+>  <r_glide_res:A269_vdw>  (1) 
+-0.96735562760237903
+
+>  <r_glide_res:A274_Eint>  (1) 
+3.4451408132681198
+
+>  <r_glide_res:A274_coul>  (1) 
+3.5025779139113902
+
+>  <r_glide_res:A274_dist>  (1) 
+7.0534486972630104
+
+>  <r_glide_res:A274_hbond>  (1) 
+0
+
+>  <r_glide_res:A274_vdw>  (1) 
+-0.057437100643267701
+
+>  <r_glide_res:A275_Eint>  (1) 
+-1.4662657137941899
+
+>  <r_glide_res:A275_coul>  (1) 
+-1.22072123274957
+
+>  <r_glide_res:A275_dist>  (1) 
+3.86182435402683
+
+>  <r_glide_res:A275_hbond>  (1) 
+0
+
+>  <r_glide_res:A275_vdw>  (1) 
+-0.24554448104462401
+
+>  <r_glide_res:A276_Eint>  (1) 
+-2.0135890103096998
+
+>  <r_glide_res:A276_coul>  (1) 
+-0.188246165363223
+
+>  <r_glide_res:A276_dist>  (1) 
+2.6536058834847802
+
+>  <r_glide_res:A276_hbond>  (1) 
+0
+
+>  <r_glide_res:A276_vdw>  (1) 
+-1.8253428449464799
+
+>  <r_glide_res:A277_Eint>  (1) 
+-0.044139776589339097
+
+>  <r_glide_res:A277_coul>  (1) 
+-0.0012545939174211701
+
+>  <r_glide_res:A277_dist>  (1) 
+7.5588358332948298
+
+>  <r_glide_res:A277_hbond>  (1) 
+0
+
+>  <r_glide_res:A277_vdw>  (1) 
+-0.042885182671918001
+
+>  <r_glide_res:A278_Eint>  (1) 
+-0.025128422018147301
+
+>  <r_glide_res:A278_coul>  (1) 
+-0.0043849229683261496
+
+>  <r_glide_res:A278_dist>  (1) 
+9.6007216454382505
+
+>  <r_glide_res:A278_hbond>  (1) 
+0
+
+>  <r_glide_res:A278_vdw>  (1) 
+-0.020743499049821201
+
+>  <r_glide_res:A29_Eint>  (1) 
+-0.081080587462250303
+
+>  <r_glide_res:A29_coul>  (1) 
+0.058294648656210597
+
+>  <r_glide_res:A29_dist>  (1) 
+6.6424675942681501
+
+>  <r_glide_res:A29_hbond>  (1) 
+0
+
+>  <r_glide_res:A29_vdw>  (1) 
+-0.139375236118461
+
+>  <r_glide_res:A305_Eint>  (1) 
+-0.069722941347663006
+
+>  <r_glide_res:A305_coul>  (1) 
+0.33945276963832899
+
+>  <r_glide_res:A305_dist>  (1) 
+3.4652673183140901
+
+>  <r_glide_res:A305_hbond>  (1) 
+0
+
+>  <r_glide_res:A305_vdw>  (1) 
+-0.40917571098599198
+
+>  <r_glide_res:A306_Eint>  (1) 
+-2.97536577003449
+
+>  <r_glide_res:A306_coul>  (1) 
+-1.7760102850383199
+
+>  <r_glide_res:A306_dist>  (1) 
+2.6040114497918498
+
+>  <r_glide_res:A306_hbond>  (1) 
+0
+
+>  <r_glide_res:A306_vdw>  (1) 
+-1.1993554849961701
+
+>  <r_glide_res:A307_Eint>  (1) 
+-0.59990434816444105
+
+>  <r_glide_res:A307_coul>  (1) 
+-0.43963992869239898
+
+>  <r_glide_res:A307_dist>  (1) 
+4.4746041748856102
+
+>  <r_glide_res:A307_hbond>  (1) 
+0
+
+>  <r_glide_res:A307_vdw>  (1) 
+-0.16026441947204101
+
+>  <r_glide_res:A308_Eint>  (1) 
+-4.7320876253944899
+
+>  <r_glide_res:A308_coul>  (1) 
+-3.8344269103644399
+
+>  <r_glide_res:A308_dist>  (1) 
+1.89421918802317
+
+>  <r_glide_res:A308_hbond>  (1) 
+-0.32000000000000001
+
+>  <r_glide_res:A308_vdw>  (1) 
+-0.57766071503005101
+
+>  <r_glide_res:A309_Eint>  (1) 
+0.070324536849608002
+
+>  <r_glide_res:A309_coul>  (1) 
+0.084764779340819593
+
+>  <r_glide_res:A309_dist>  (1) 
+9.55538796070873
+
+>  <r_glide_res:A309_hbond>  (1) 
+0
+
+>  <r_glide_res:A309_vdw>  (1) 
+-0.0144402424912116
+
+>  <r_glide_res:A32_Eint>  (1) 
+-0.74292193145857999
+
+>  <r_glide_res:A32_coul>  (1) 
+-0.111013649572947
+
+>  <r_glide_res:A32_dist>  (1) 
+3.19241863191764
+
+>  <r_glide_res:A32_hbond>  (1) 
+0
+
+>  <r_glide_res:A32_vdw>  (1) 
+-0.63190828188563297
+
+>  <r_glide_res:A33_Eint>  (1) 
+-1.5477191382830999
+
+>  <r_glide_res:A33_coul>  (1) 
+0.72111740770661004
+
+>  <r_glide_res:A33_dist>  (1) 
+2.51631449647128
+
+>  <r_glide_res:A33_hbond>  (1) 
+0
+
+>  <r_glide_res:A33_vdw>  (1) 
+-2.2688365459897102
+
+>  <r_glide_res:A34_Eint>  (1) 
+-1.6822732794997499
+
+>  <r_glide_res:A34_coul>  (1) 
+-0.250089548225083
+
+>  <r_glide_res:A34_dist>  (1) 
+2.3441948796102898
+
+>  <r_glide_res:A34_hbond>  (1) 
+0
+
+>  <r_glide_res:A34_vdw>  (1) 
+-1.4321837312746699
+
+>  <r_glide_res:A35_Eint>  (1) 
+-0.097577871063724703
+
+>  <r_glide_res:A35_coul>  (1) 
+0.41071528886978498
+
+>  <r_glide_res:A35_dist>  (1) 
+3.9786989601972298
+
+>  <r_glide_res:A35_hbond>  (1) 
+0
+
+>  <r_glide_res:A35_vdw>  (1) 
+-0.50829315993350999
+
+>  <r_glide_res:A36_Eint>  (1) 
+-0.34736119938415599
+
+>  <r_glide_res:A36_coul>  (1) 
+-0.30098743283379298
+
+>  <r_glide_res:A36_dist>  (1) 
+7.9136125189823403
+
+>  <r_glide_res:A36_hbond>  (1) 
+0
+
+>  <r_glide_res:A36_vdw>  (1) 
+-0.046373766550362898
+
+>  <r_glide_res:A37_Eint>  (1) 
+0.019885179028315901
+
+>  <r_glide_res:A37_coul>  (1) 
+0.034153727685214998
+
+>  <r_glide_res:A37_dist>  (1) 
+10.059670027058701
+
+>  <r_glide_res:A37_hbond>  (1) 
+0
+
+>  <r_glide_res:A37_vdw>  (1) 
+-0.0142685486568991
+
+>  <r_glide_res:A39_Eint>  (1) 
+-0.39517156908149798
+
+>  <r_glide_res:A39_coul>  (1) 
+-0.33438695864192602
+
+>  <r_glide_res:A39_dist>  (1) 
+5.5558468873409099
+
+>  <r_glide_res:A39_hbond>  (1) 
+0
+
+>  <r_glide_res:A39_vdw>  (1) 
+-0.060784610439571903
+
+>  <r_glide_res:A401_Eint>  (1) 
+-41.470199162817302
+
+>  <r_glide_res:A401_coul>  (1) 
+-41.519377346066697
+
+>  <r_glide_res:A401_dist>  (1) 
+2.2954315056632302
+
+>  <r_glide_res:A401_hbond>  (1) 
+0
+
+>  <r_glide_res:A401_vdw>  (1) 
+0.049178183249393201
+
+>  <r_i_docking_score>  (1) 
+-8.5327541949749897
+
+>  <r_i_glide_ecoul>  (1) 
+-22.458904266357401
+
+>  <r_i_glide_eff_state_penalty>  (1) 
+-0
+
+>  <r_i_glide_einternal>  (1) 
+8.1358184814453107
+
+>  <r_i_glide_emodel>  (1) 
+-95.825074927129194
+
+>  <r_i_glide_energy>  (1) 
+-59.310169219970703
+
+>  <r_i_glide_erotb>  (1) 
+1.4074451791309099
+
+>  <r_i_glide_esite>  (1) 
+-0.62179203552363205
+
+>  <r_i_glide_evdw>  (1) 
+-36.851264953613303
+
+>  <r_i_glide_gscore>  (1) 
+-8.5327541949749897
+
+>  <r_i_glide_hbond>  (1) 
+-0.77419417452094996
+
+>  <r_i_glide_ligand_efficiency>  (1) 
+-0.30474122124910702
+
+>  <r_i_glide_ligand_efficiency_ln>  (1) 
+-1.96961020074971
+
+>  <r_i_glide_ligand_efficiency_sa>  (1) 
+-0.92537383069311396
+
+>  <r_i_glide_lipo>  (1) 
+-0.78089716408757504
+
+>  <r_i_glide_metal>  (1) 
+-1.7512691166177701
+
+>  <r_i_glide_rewards>  (1) 
+-0.80064799572170098
+
+>  <r_lp_Energy>  (1) 
+19.7166
+
+>  <r_lp_tautomer_probability>  (1) 
+1
+
+>  <i_epik_Tot_Q>  (1) 
+0
+
+>  <i_epik_Tot_abs_Q>  (1) 
+0
+
+>  <i_i_glide_confnum>  (1) 
+450
+
+>  <i_i_glide_lignum>  (1) 
+467
+
+>  <i_i_glide_posenum>  (1) 
+32
+
+>  <i_i_glide_rotatable_bonds>  (1) 
+14
+
+>  <i_lp_mmshare_version>  (1) 
+54117
+
+>  <i_m_ct_enhanced_stereo_status>  (1) 
+0
+
+>  <i_m_ct_format>  (1) 
+2
+
+>  <i_m_source_file_index>  (1) 
+307
+
+>  <i_sd_Affinity>  (1) 
+142
+
+>  <i_sd_i\_f3d\_flags>  (1) 
+0
+
+>  <i_sd_version>  (1) 
+0
+
+>  <b_lp_Chiralities_Consistent>  (1) 
+1
+
+>  <b_sd_chiral_flag>  (1) 
+1
+
+$$$$

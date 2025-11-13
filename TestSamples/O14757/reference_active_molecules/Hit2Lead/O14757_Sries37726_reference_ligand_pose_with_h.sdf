@@ -1,0 +1,1039 @@
+O14757_Sries37726_idx-in-all-actives-369
+     RDKit          3D
+
+ 32 35  0  0  0  0  0  0  0  0999 V2000
+   10.1097   -3.9960   49.1673 N   0  0  0  0  0  0  0  0  0  0  0  0
+    9.3766   -3.5411   48.3956 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.4573   -2.9693   47.4256 C   0  0  0  0  0  0  0  0  0  0  0  0
+    7.2473   -3.6021   47.1230 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.4198   -2.9823   46.1705 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.8539   -1.7699   45.5669 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.0732   -1.1970   45.9451 C   0  0  0  0  0  0  0  0  0  0  0  0
+    8.8648   -1.8019   46.8657 N   0  0  0  0  0  0  0  0  0  0  0  0
+    5.8802   -1.3742   44.6699 N   0  0  0  0  0  0  0  0  0  0  0  0
+    4.8545   -2.2962   44.6739 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.7555   -2.2575   43.9189 N   0  0  0  0  0  0  0  0  0  0  0  0
+    2.8710   -3.2665   44.1449 C   0  0  0  0  0  0  0  0  0  0  0  0
+    3.0279   -4.2917   45.0885 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9886   -5.3523   45.2708 C   0  0  0  0  0  0  0  0  0  0  0  0
+    2.3981   -6.6885   45.3987 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4747   -7.7187   45.5670 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1143   -7.4308   45.6108 C   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.3163   -6.1130   45.4920 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.6042   -5.0764   45.3257 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.1081   -3.7997   45.2264 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.2094   -4.3050   45.8474 C   0  0  0  0  0  0  0  0  0  0  0  0
+    5.1564   -3.2887   45.6346 C   0  0  0  0  0  0  0  0  0  0  0  0
+    6.9536   -4.5281   47.5979 H   0  0  0  0  0  0  0  0  0  0  0  0
+    8.4209   -0.2593   45.5391 H   0  0  0  0  0  0  0  0  0  0  0  0
+    5.9062   -0.5405   44.1032 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.9817   -3.2327   43.5320 H   0  0  0  0  0  0  0  0  0  0  0  0
+    3.4485   -6.9368   45.3739 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.8152   -8.7373   45.6742 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6051   -8.2242   45.7470 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.3739   -5.8920   45.5382 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.8730   -3.7744   45.1643 H   0  0  0  0  0  0  0  0  0  0  0  0
+    4.3827   -5.0747   46.5859 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  3  0
+  2  3  1  0
+  3  4  2  0
+  3  8  1  0
+  4  5  1  0
+  4 23  1  0
+  5  6  2  0
+  5 22  1  0
+  6  7  1  0
+  6  9  1  0
+  7  8  2  0
+  7 24  1  0
+  9 10  1  0
+  9 25  1  0
+ 10 11  1  0
+ 10 22  2  0
+ 11 12  2  0
+ 12 13  1  0
+ 12 26  1  0
+ 13 14  1  0
+ 13 21  2  0
+ 14 15  2  0
+ 14 19  1  0
+ 15 16  1  0
+ 15 27  1  0
+ 16 17  2  0
+ 16 28  1  0
+ 17 18  1  0
+ 17 29  1  0
+ 18 19  2  0
+ 18 30  1  0
+ 19 20  1  0
+ 20 31  1  0
+ 21 22  1  0
+ 21 32  1  0
+M  END
+>  <s_epik_cmdline>  (1) 
+J2VwaWtfcHl0aG9uJywgJy1waHQnLCAnMi4wJywgJy1waCcsICc3LjAnLCAnLXRuJywgJzgnLCAnLW1hJywgJzUwMCcsICctaW1hZScsICc8aW5maWxlLm1hZT4nLCAnLW9tYWUnLCAnPG91dGZpbGUubWFlPic=
+
+>  <s_epik_input>  (1) 
+TiNDYyhbY0hdMSluW2NIXWMoYzEyKVtuSF1jM2MyW2NIXWMoW2NIXW4zKS1jNFtjSF1bY0hdW2NIXVtjSF1jNFtPSF0=
+
+>  <s_i_glide_gridfile>  (1) 
+O14757_Sries28506_Sries28506_grid
+
+>  <s_lp_Force_Field>  (1) 
+S-OPLS
+
+>  <s_lp_Variant>  (1) 
+O14757_Sries37726_idx-in-all-actives-369-1
+
+>  <s_m_source_file>  (1) 
+/home/fanzhehuan/myprojects/selfGenBench/Smiles_min_50_max_inf_Scaffold_50_Serise_20_pocket/O14757/O14757_all_active_molecules_new_20241120.sdf
+
+>  <s_sd_Affinity_Type>  (1) 
+IC50
+
+>  <s_sd_Affinity_Unit>  (1) 
+nM
+
+>  <r_epik_Charging_Adjusted_Penalty>  (1) 
+0.00099701900000000003
+
+>  <r_epik_Ionization_Penalty>  (1) 
+0.0016000000000000001
+
+>  <r_epik_Ionization_Penalty_Charging>  (1) 
+0
+
+>  <r_epik_Ionization_Penalty_Neutral>  (1) 
+0.0016000000000000001
+
+>  <r_epik_State_Penalty>  (1) 
+0.001
+
+>  <r_glide_res:A128_Eint>  (1) 
+0.085963724590805396
+
+>  <r_glide_res:A128_coul>  (1) 
+0.112286986068532
+
+>  <r_glide_res:A128_dist>  (1) 
+6.9389683692522102
+
+>  <r_glide_res:A128_hbond>  (1) 
+0
+
+>  <r_glide_res:A128_vdw>  (1) 
+-0.0263232614777263
+
+>  <r_glide_res:A130_Eint>  (1) 
+-1.53763118313363
+
+>  <r_glide_res:A130_coul>  (1) 
+-1.5029194447340299
+
+>  <r_glide_res:A130_dist>  (1) 
+7.2802697303962596
+
+>  <r_glide_res:A130_hbond>  (1) 
+0
+
+>  <r_glide_res:A130_vdw>  (1) 
+-0.034711738399600199
+
+>  <r_glide_res:A132_Eint>  (1) 
+1.20443867669463
+
+>  <r_glide_res:A132_coul>  (1) 
+1.28292433901248
+
+>  <r_glide_res:A132_dist>  (1) 
+6.2510765298592803
+
+>  <r_glide_res:A132_hbond>  (1) 
+0
+
+>  <r_glide_res:A132_vdw>  (1) 
+-0.0784856623178532
+
+>  <r_glide_res:A133_Eint>  (1) 
+0.0083275954322789697
+
+>  <r_glide_res:A133_coul>  (1) 
+0.087560696757304393
+
+>  <r_glide_res:A133_dist>  (1) 
+7.4632696715080398
+
+>  <r_glide_res:A133_hbond>  (1) 
+0
+
+>  <r_glide_res:A133_vdw>  (1) 
+-0.079233101325025396
+
+>  <r_glide_res:A134_Eint>  (1) 
+-1.4065116420792001
+
+>  <r_glide_res:A134_coul>  (1) 
+-0.34632863354509502
+
+>  <r_glide_res:A134_dist>  (1) 
+3.9034556547992398
+
+>  <r_glide_res:A134_hbond>  (1) 
+0
+
+>  <r_glide_res:A134_vdw>  (1) 
+-1.06018300853411
+
+>  <r_glide_res:A135_Eint>  (1) 
+-1.55503428085878
+
+>  <r_glide_res:A135_coul>  (1) 
+-0.706151078242649
+
+>  <r_glide_res:A135_dist>  (1) 
+3.3026110563425499
+
+>  <r_glide_res:A135_hbond>  (1) 
+0
+
+>  <r_glide_res:A135_vdw>  (1) 
+-0.84888320261613504
+
+>  <r_glide_res:A136_Eint>  (1) 
+-0.21109040457741701
+
+>  <r_glide_res:A136_coul>  (1) 
+-0.016295103581381299
+
+>  <r_glide_res:A136_dist>  (1) 
+5.7785418702357303
+
+>  <r_glide_res:A136_hbond>  (1) 
+0
+
+>  <r_glide_res:A136_vdw>  (1) 
+-0.19479530099603601
+
+>  <r_glide_res:A137_Eint>  (1) 
+-3.6439624437720899
+
+>  <r_glide_res:A137_coul>  (1) 
+-0.115133254462795
+
+>  <r_glide_res:A137_dist>  (1) 
+2.64523024802735
+
+>  <r_glide_res:A137_hbond>  (1) 
+0
+
+>  <r_glide_res:A137_vdw>  (1) 
+-3.52882918930929
+
+>  <r_glide_res:A138_Eint>  (1) 
+-0.40233201458531798
+
+>  <r_glide_res:A138_coul>  (1) 
+-0.15583572679213401
+
+>  <r_glide_res:A138_dist>  (1) 
+5.8698355948817396
+
+>  <r_glide_res:A138_hbond>  (1) 
+0
+
+>  <r_glide_res:A138_vdw>  (1) 
+-0.246496287793184
+
+>  <r_glide_res:A139_Eint>  (1) 
+-0.345688563404635
+
+>  <r_glide_res:A139_coul>  (1) 
+-0.26316669546599902
+
+>  <r_glide_res:A139_dist>  (1) 
+6.6708103315122198
+
+>  <r_glide_res:A139_hbond>  (1) 
+0
+
+>  <r_glide_res:A139_vdw>  (1) 
+-0.082521867938636098
+
+>  <r_glide_res:A13_Eint>  (1) 
+-0.33903040012325297
+
+>  <r_glide_res:A13_coul>  (1) 
+-0.145829544907213
+
+>  <r_glide_res:A13_dist>  (1) 
+5.7324522569354803
+
+>  <r_glide_res:A13_hbond>  (1) 
+0
+
+>  <r_glide_res:A13_vdw>  (1) 
+-0.19320085521604
+
+>  <r_glide_res:A144_Eint>  (1) 
+-0.044833084016952802
+
+>  <r_glide_res:A144_coul>  (1) 
+-0.019035138867693702
+
+>  <r_glide_res:A144_dist>  (1) 
+10.2362887411962
+
+>  <r_glide_res:A144_hbond>  (1) 
+0
+
+>  <r_glide_res:A144_vdw>  (1) 
+-0.025797945149259101
+
+>  <r_glide_res:A145_Eint>  (1) 
+0.50291762763733305
+
+>  <r_glide_res:A145_coul>  (1) 
+0.57326775255134599
+
+>  <r_glide_res:A145_dist>  (1) 
+7.4069349769055899
+
+>  <r_glide_res:A145_hbond>  (1) 
+0
+
+>  <r_glide_res:A145_vdw>  (1) 
+-0.070350124914012699
+
+>  <r_glide_res:A146_Eint>  (1) 
+0.00181121222112458
+
+>  <r_glide_res:A146_coul>  (1) 
+0.053753507281327599
+
+>  <r_glide_res:A146_dist>  (1) 
+7.1034026666350298
+
+>  <r_glide_res:A146_hbond>  (1) 
+0
+
+>  <r_glide_res:A146_vdw>  (1) 
+-0.051942295060203002
+
+>  <r_glide_res:A147_Eint>  (1) 
+0.42366890352945002
+
+>  <r_glide_res:A147_coul>  (1) 
+1.2306877582092199
+
+>  <r_glide_res:A147_dist>  (1) 
+2.3132128411299799
+
+>  <r_glide_res:A147_hbond>  (1) 
+0
+
+>  <r_glide_res:A147_vdw>  (1) 
+-0.80701885467976497
+
+>  <r_glide_res:A148_Eint>  (1) 
+-10.7711387399376
+
+>  <r_glide_res:A148_coul>  (1) 
+-11.3199356684508
+
+>  <r_glide_res:A148_dist>  (1) 
+1.65859399696518
+
+>  <r_glide_res:A148_hbond>  (1) 
+-0.16
+
+>  <r_glide_res:A148_vdw>  (1) 
+0.70879692851323495
+
+>  <r_glide_res:A149_Eint>  (1) 
+-0.033052505070751401
+
+>  <r_glide_res:A149_coul>  (1) 
+0.0078618747936870202
+
+>  <r_glide_res:A149_dist>  (1) 
+7.2599139147325102
+
+>  <r_glide_res:A149_hbond>  (1) 
+0
+
+>  <r_glide_res:A149_vdw>  (1) 
+-0.040914379864438397
+
+>  <r_glide_res:A14_Eint>  (1) 
+-0.066119922143542703
+
+>  <r_glide_res:A14_coul>  (1) 
+0.16527562322109601
+
+>  <r_glide_res:A14_dist>  (1) 
+6.5776970937346704
+
+>  <r_glide_res:A14_hbond>  (1) 
+0
+
+>  <r_glide_res:A14_vdw>  (1) 
+-0.23139554536463899
+
+>  <r_glide_res:A150_Eint>  (1) 
+0.094385455647270605
+
+>  <r_glide_res:A150_coul>  (1) 
+0.10604710855886799
+
+>  <r_glide_res:A150_dist>  (1) 
+7.8302716672714299
+
+>  <r_glide_res:A150_hbond>  (1) 
+0
+
+>  <r_glide_res:A150_vdw>  (1) 
+-0.011661652911597299
+
+>  <r_glide_res:A15_Eint>  (1) 
+-6.7623346555699699
+
+>  <r_glide_res:A15_coul>  (1) 
+-0.74444826585819002
+
+>  <r_glide_res:A15_dist>  (1) 
+2.7778076008676398
+
+>  <r_glide_res:A15_hbond>  (1) 
+0
+
+>  <r_glide_res:A15_vdw>  (1) 
+-6.01788638971178
+
+>  <r_glide_res:A16_Eint>  (1) 
+-0.70029089468140204
+
+>  <r_glide_res:A16_coul>  (1) 
+0.524104076999651
+
+>  <r_glide_res:A16_dist>  (1) 
+2.1961955065699299
+
+>  <r_glide_res:A16_hbond>  (1) 
+0
+
+>  <r_glide_res:A16_vdw>  (1) 
+-1.22439497168105
+
+>  <r_glide_res:A17_Eint>  (1) 
+-1.08181713877689
+
+>  <r_glide_res:A17_coul>  (1) 
+-0.68662709673353095
+
+>  <r_glide_res:A17_dist>  (1) 
+3.9368972232105999
+
+>  <r_glide_res:A17_hbond>  (1) 
+0
+
+>  <r_glide_res:A17_vdw>  (1) 
+-0.39519004204335401
+
+>  <r_glide_res:A18_Eint>  (1) 
+-0.07260809865067
+
+>  <r_glide_res:A18_coul>  (1) 
+0.0125870647286881
+
+>  <r_glide_res:A18_dist>  (1) 
+5.2950462180262097
+
+>  <r_glide_res:A18_hbond>  (1) 
+0
+
+>  <r_glide_res:A18_vdw>  (1) 
+-0.085195163379358105
+
+>  <r_glide_res:A19_Eint>  (1) 
+0.026876820100168501
+
+>  <r_glide_res:A19_coul>  (1) 
+0.051102777292694503
+
+>  <r_glide_res:A19_dist>  (1) 
+7.4042402595994199
+
+>  <r_glide_res:A19_hbond>  (1) 
+0
+
+>  <r_glide_res:A19_vdw>  (1) 
+-0.024225957192526001
+
+>  <r_glide_res:A20_Eint>  (1) 
+-1.11531988914813
+
+>  <r_glide_res:A20_coul>  (1) 
+0.67673907915286902
+
+>  <r_glide_res:A20_dist>  (1) 
+2.3998915339439399
+
+>  <r_glide_res:A20_hbond>  (1) 
+0
+
+>  <r_glide_res:A20_vdw>  (1) 
+-1.79205896830099
+
+>  <r_glide_res:A21_Eint>  (1) 
+-0.12729586012129901
+
+>  <r_glide_res:A21_coul>  (1) 
+-0.069424464685222897
+
+>  <r_glide_res:A21_dist>  (1) 
+6.7542888455046803
+
+>  <r_glide_res:A21_hbond>  (1) 
+0
+
+>  <r_glide_res:A21_vdw>  (1) 
+-0.057871395436075702
+
+>  <r_glide_res:A22_Eint>  (1) 
+-0.68943087950133897
+
+>  <r_glide_res:A22_coul>  (1) 
+-0.504832429588153
+
+>  <r_glide_res:A22_dist>  (1) 
+5.8238517752012404
+
+>  <r_glide_res:A22_hbond>  (1) 
+0
+
+>  <r_glide_res:A22_vdw>  (1) 
+-0.184598449913186
+
+>  <r_glide_res:A23_Eint>  (1) 
+-2.8667454059345601
+
+>  <r_glide_res:A23_coul>  (1) 
+-0.051454669242858901
+
+>  <r_glide_res:A23_dist>  (1) 
+2.8002310667438599
+
+>  <r_glide_res:A23_hbond>  (1) 
+0
+
+>  <r_glide_res:A23_vdw>  (1) 
+-2.8152907366917002
+
+>  <r_glide_res:A24_Eint>  (1) 
+-0.177851152375953
+
+>  <r_glide_res:A24_coul>  (1) 
+0.0063611932973829397
+
+>  <r_glide_res:A24_dist>  (1) 
+7.2019629968316403
+
+>  <r_glide_res:A24_hbond>  (1) 
+0
+
+>  <r_glide_res:A24_vdw>  (1) 
+-0.184212345673336
+
+>  <r_glide_res:A25_Eint>  (1) 
+-0.157321424130002
+
+>  <r_glide_res:A25_coul>  (1) 
+0.073566440730716207
+
+>  <r_glide_res:A25_dist>  (1) 
+5.5458915872003196
+
+>  <r_glide_res:A25_hbond>  (1) 
+0
+
+>  <r_glide_res:A25_vdw>  (1) 
+-0.230887864860718
+
+>  <r_glide_res:A26_Eint>  (1) 
+-0.059856714366036803
+
+>  <r_glide_res:A26_coul>  (1) 
+-0.036285962054984203
+
+>  <r_glide_res:A26_dist>  (1) 
+8.3442182171938004
+
+>  <r_glide_res:A26_hbond>  (1) 
+0
+
+>  <r_glide_res:A26_vdw>  (1) 
+-0.023570752311052601
+
+>  <r_glide_res:A35_Eint>  (1) 
+-0.016257950297911401
+
+>  <r_glide_res:A35_coul>  (1) 
+0.041478306646462099
+
+>  <r_glide_res:A35_dist>  (1) 
+7.3688945934258099
+
+>  <r_glide_res:A35_hbond>  (1) 
+0
+
+>  <r_glide_res:A35_vdw>  (1) 
+-0.057736256944373503
+
+>  <r_glide_res:A36_Eint>  (1) 
+-0.37708274113794699
+
+>  <r_glide_res:A36_coul>  (1) 
+-0.024026607055827699
+
+>  <r_glide_res:A36_dist>  (1) 
+4.1421586617283204
+
+>  <r_glide_res:A36_hbond>  (1) 
+0
+
+>  <r_glide_res:A36_vdw>  (1) 
+-0.353056134082119
+
+>  <r_glide_res:A37_Eint>  (1) 
+-0.0911394558434927
+
+>  <r_glide_res:A37_coul>  (1) 
+0.0030717929975531402
+
+>  <r_glide_res:A37_dist>  (1) 
+7.0741564249723101
+
+>  <r_glide_res:A37_hbond>  (1) 
+0
+
+>  <r_glide_res:A37_vdw>  (1) 
+-0.0942112488410458
+
+>  <r_glide_res:A38_Eint>  (1) 
+1.6478902064932699
+
+>  <r_glide_res:A38_coul>  (1) 
+1.9697245214918599
+
+>  <r_glide_res:A38_dist>  (1) 
+4.9536270178120203
+
+>  <r_glide_res:A38_hbond>  (1) 
+0
+
+>  <r_glide_res:A38_vdw>  (1) 
+-0.32183431499859499
+
+>  <r_glide_res:A39_Eint>  (1) 
+-0.081481119269403199
+
+>  <r_glide_res:A39_coul>  (1) 
+-0.042644876345637101
+
+>  <r_glide_res:A39_dist>  (1) 
+8.5561288399342192
+
+>  <r_glide_res:A39_hbond>  (1) 
+0
+
+>  <r_glide_res:A39_vdw>  (1) 
+-0.038836242923766001
+
+>  <r_glide_res:A40_Eint>  (1) 
+-0.00028472245259202701
+
+>  <r_glide_res:A40_coul>  (1) 
+0.020722245877750699
+
+>  <r_glide_res:A40_dist>  (1) 
+8.9623943159776704
+
+>  <r_glide_res:A40_hbond>  (1) 
+0
+
+>  <r_glide_res:A40_vdw>  (1) 
+-0.021006968330342699
+
+>  <r_glide_res:A55_Eint>  (1) 
+-1.3582384111050301
+
+>  <r_glide_res:A55_coul>  (1) 
+-1.3267410678584699
+
+>  <r_glide_res:A55_dist>  (1) 
+7.7934448569761701
+
+>  <r_glide_res:A55_hbond>  (1) 
+0
+
+>  <r_glide_res:A55_vdw>  (1) 
+-0.031497343246560998
+
+>  <r_glide_res:A59_Eint>  (1) 
+-0.030548807263531898
+
+>  <r_glide_res:A59_coul>  (1) 
+-0.018431745764557899
+
+>  <r_glide_res:A59_dist>  (1) 
+9.1290066790275706
+
+>  <r_glide_res:A59_hbond>  (1) 
+0
+
+>  <r_glide_res:A59_vdw>  (1) 
+-0.0121170614989741
+
+>  <r_glide_res:A68_Eint>  (1) 
+-0.156021209057672
+
+>  <r_glide_res:A68_coul>  (1) 
+0.0015213090280589399
+
+>  <r_glide_res:A68_dist>  (1) 
+5.6732033433964304
+
+>  <r_glide_res:A68_hbond>  (1) 
+0
+
+>  <r_glide_res:A68_vdw>  (1) 
+-0.157542518085731
+
+>  <r_glide_res:A69_Eint>  (1) 
+0.40322003463710798
+
+>  <r_glide_res:A69_coul>  (1) 
+0.42192642327240798
+
+>  <r_glide_res:A69_dist>  (1) 
+10.086106022724
+
+>  <r_glide_res:A69_hbond>  (1) 
+0
+
+>  <r_glide_res:A69_vdw>  (1) 
+-0.018706388635300501
+
+>  <r_glide_res:A82_Eint>  (1) 
+-0.0281110699787088
+
+>  <r_glide_res:A82_coul>  (1) 
+0.00166258932447719
+
+>  <r_glide_res:A82_dist>  (1) 
+8.9312389640478607
+
+>  <r_glide_res:A82_hbond>  (1) 
+0
+
+>  <r_glide_res:A82_vdw>  (1) 
+-0.029773659303186002
+
+>  <r_glide_res:A83_Eint>  (1) 
+-0.0123029710236184
+
+>  <r_glide_res:A83_coul>  (1) 
+0.0085736373686191008
+
+>  <r_glide_res:A83_dist>  (1) 
+10.148300437152299
+
+>  <r_glide_res:A83_hbond>  (1) 
+0
+
+>  <r_glide_res:A83_vdw>  (1) 
+-0.020876608392237501
+
+>  <r_glide_res:A84_Eint>  (1) 
+-0.17043358897863101
+
+>  <r_glide_res:A84_coul>  (1) 
+-0.017674004313443101
+
+>  <r_glide_res:A84_dist>  (1) 
+5.39264700973707
+
+>  <r_glide_res:A84_hbond>  (1) 
+0
+
+>  <r_glide_res:A84_vdw>  (1) 
+-0.15275958466518799
+
+>  <r_glide_res:A85_Eint>  (1) 
+-0.83992612663635202
+
+>  <r_glide_res:A85_coul>  (1) 
+-0.69611115512635902
+
+>  <r_glide_res:A85_dist>  (1) 
+5.5450444642983401
+
+>  <r_glide_res:A85_hbond>  (1) 
+0
+
+>  <r_glide_res:A85_vdw>  (1) 
+-0.14381497150999401
+
+>  <r_glide_res:A86_Eint>  (1) 
+-1.28062552244058
+
+>  <r_glide_res:A86_coul>  (1) 
+0.70370396006869795
+
+>  <r_glide_res:A86_dist>  (1) 
+2.40497624801369
+
+>  <r_glide_res:A86_hbond>  (1) 
+0
+
+>  <r_glide_res:A86_vdw>  (1) 
+-1.9843294825092801
+
+>  <r_glide_res:A87_Eint>  (1) 
+-2.3268491636778701
+
+>  <r_glide_res:A87_coul>  (1) 
+-0.26853958539518402
+
+>  <r_glide_res:A87_dist>  (1) 
+2.8060430012747801
+
+>  <r_glide_res:A87_hbond>  (1) 
+0
+
+>  <r_glide_res:A87_vdw>  (1) 
+-2.0583095782826901
+
+>  <r_glide_res:A88_Eint>  (1) 
+-1.0223145459406
+
+>  <r_glide_res:A88_coul>  (1) 
+0.46598638665648601
+
+>  <r_glide_res:A88_dist>  (1) 
+2.3470367078065202
+
+>  <r_glide_res:A88_hbond>  (1) 
+0
+
+>  <r_glide_res:A88_vdw>  (1) 
+-1.48830093259708
+
+>  <r_glide_res:A89_Eint>  (1) 
+-0.65235310902083399
+
+>  <r_glide_res:A89_coul>  (1) 
+0.118041248698578
+
+>  <r_glide_res:A89_dist>  (1) 
+4.3671331434300296
+
+>  <r_glide_res:A89_hbond>  (1) 
+0
+
+>  <r_glide_res:A89_vdw>  (1) 
+-0.770394357719411
+
+>  <r_glide_res:A90_Eint>  (1) 
+-2.8362927494505499
+
+>  <r_glide_res:A90_coul>  (1) 
+-0.080623624822298706
+
+>  <r_glide_res:A90_dist>  (1) 
+2.7835196534815201
+
+>  <r_glide_res:A90_hbond>  (1) 
+0
+
+>  <r_glide_res:A90_vdw>  (1) 
+-2.7556691246282501
+
+>  <r_glide_res:A91_Eint>  (1) 
+-3.8765450314967902
+
+>  <r_glide_res:A91_coul>  (1) 
+-0.22648404914259401
+
+>  <r_glide_res:A91_dist>  (1) 
+2.8697330237045402
+
+>  <r_glide_res:A91_hbond>  (1) 
+0
+
+>  <r_glide_res:A91_vdw>  (1) 
+-3.6500609823542001
+
+>  <r_glide_res:A92_Eint>  (1) 
+-0.031971125477995202
+
+>  <r_glide_res:A92_coul>  (1) 
+0.058232103381747301
+
+>  <r_glide_res:A92_dist>  (1) 
+7.6747386706504601
+
+>  <r_glide_res:A92_hbond>  (1) 
+0
+
+>  <r_glide_res:A92_vdw>  (1) 
+-0.090203228859742496
+
+>  <r_glide_res:A93_Eint>  (1) 
+-0.115952566995749
+
+>  <r_glide_res:A93_coul>  (1) 
+-0.0044059488997226504
+
+>  <r_glide_res:A93_dist>  (1) 
+7.4228108040944596
+
+>  <r_glide_res:A93_hbond>  (1) 
+0
+
+>  <r_glide_res:A93_vdw>  (1) 
+-0.11154661809602601
+
+>  <r_glide_res:A94_Eint>  (1) 
+0.50190846369453901
+
+>  <r_glide_res:A94_coul>  (1) 
+0.83549513730233305
+
+>  <r_glide_res:A94_dist>  (1) 
+5.0922776287761797
+
+>  <r_glide_res:A94_hbond>  (1) 
+0
+
+>  <r_glide_res:A94_vdw>  (1) 
+-0.33358667360779398
+
+>  <r_glide_res:A95_Eint>  (1) 
+-0.75835004681659501
+
+>  <r_glide_res:A95_coul>  (1) 
+-0.67514309747534595
+
+>  <r_glide_res:A95_dist>  (1) 
+7.1687200290602604
+
+>  <r_glide_res:A95_hbond>  (1) 
+0
+
+>  <r_glide_res:A95_vdw>  (1) 
+-0.083206949341249198
+
+>  <r_i_docking_score>  (1) 
+-5.5086758152645396
+
+>  <r_i_glide_ecoul>  (1) 
+-7.0124154090881303
+
+>  <r_i_glide_eff_state_penalty>  (1) 
+0.001
+
+>  <r_i_glide_einternal>  (1) 
+0.076454699039459201
+
+>  <r_i_glide_emodel>  (1) 
+-55.100892425029301
+
+>  <r_i_glide_energy>  (1) 
+-40.643660068511998
+
+>  <r_i_glide_erotb>  (1) 
+0.22154045501999101
+
+>  <r_i_glide_esite>  (1) 
+0
+
+>  <r_i_glide_evdw>  (1) 
+-33.6312446594238
+
+>  <r_i_glide_gscore>  (1) 
+-5.50967581526454
+
+>  <r_i_glide_hbond>  (1) 
+-0.16
+
+>  <r_i_glide_ligand_efficiency>  (1) 
+-0.25039435523929698
+
+>  <r_i_glide_ligand_efficiency_ln>  (1) 
+-1.34652130308315
+
+>  <r_i_glide_ligand_efficiency_sa>  (1) 
+-0.70161483083170095
+
+>  <r_i_glide_lipo>  (1) 
+-1.03525341531542
+
+>  <r_i_glide_metal>  (1) 
+-0
+
+>  <r_i_glide_rewards>  (1) 
+-1.8025383106347099
+
+>  <r_lp_Energy>  (1) 
+35.8386
+
+>  <r_lp_tautomer_probability>  (1) 
+1
+
+>  <r_sd_Affinity>  (1) 
+41.700000000000003
+
+>  <i_epik_Tot_Q>  (1) 
+0
+
+>  <i_epik_Tot_abs_Q>  (1) 
+0
+
+>  <i_i_glide_confnum>  (1) 
+1
+
+>  <i_i_glide_lignum>  (1) 
+506
+
+>  <i_i_glide_posenum>  (1) 
+336
+
+>  <i_i_glide_rotatable_bonds>  (1) 
+2
+
+>  <i_lp_mmshare_version>  (1) 
+54117
+
+>  <i_m_ct_enhanced_stereo_status>  (1) 
+0
+
+>  <i_m_ct_format>  (1) 
+2
+
+>  <i_m_source_file_index>  (1) 
+370
+
+>  <i_sd_i\_f3d\_flags>  (1) 
+0
+
+>  <i_sd_version>  (1) 
+0
+
+>  <b_lp_Chiralities_Consistent>  (1) 
+1
+
+>  <b_sd_chiral_flag>  (1) 
+1
+
+$$$$

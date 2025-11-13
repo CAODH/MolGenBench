@@ -16,8 +16,6 @@ import os
 import pickle
 
 
-
-
 def enumerate_tautomer_and_partial_chirality(smiles):
     try:
         mol = Chem.MolFromSmiles(smiles)
@@ -70,7 +68,6 @@ def compute_smiles_scaffold_inchi_map(uniprot_id,active_dir):
         os.makedirs(os.path.dirname(save_smiles_path),exist_ok=True)
         os.makedirs(os.path.dirname(save_scaffold_path),exist_ok=True)
         ref_actives_path = os.path.join(active_dir,uniprot_id,f'reference_active_molecules/{uniprot_id}_reference_active_molecules.sdf')
-        uniprot_ref_smiles = []
         ref_mols = Chem.SDMolSupplier(ref_actives_path)
         
         ref_inchi_map_ref_smiles = {}

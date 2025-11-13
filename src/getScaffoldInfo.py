@@ -6,10 +6,11 @@ from tqdm import tqdm
 from rdkit import Chem, RDLogger
 import pandas as pd
 RDLogger.DisableLog("rdApp.*")
-from spyrmsd import rmsd, molecule
 import signal
 from contextlib import contextmanager
 class TimeoutException(Exception): pass
+# from rdkit.Geometry.rdGeometry import Point3D
+from rdkit import Geometry
 
 
 @contextmanager
@@ -24,40 +25,6 @@ def time_limit(seconds):
     finally:
         signal.alarm(0)
 
-from rdkit.Chem import RemoveHs
-def remove_all_hs(mol,santize=None):
-    params = Chem.RemoveHsParameters()
-    params.removeAndTrackIsotopes = True
-    params.removeDefiningBondStereo = True
-    params.removeDegreeZero = True
-    params.removeDummyNeighbors = True
-    params.removeHigherDegrees = True
-    params.removeHydrides = True
-    params.removeInSGroups = True
-    params.removeIsotopes = True
-    params.removeMapped = True
-    params.removeNonimplicit = True
-    params.removeOnlyHNeighbors = True
-    params.removeWithQuery = True
-    params.removeWithWedgedBond = True
-    # if santize is not None:
-    params.sanitize = Chem.SanitizeFlags.SANITIZE_ALL ^ Chem.SanitizeFlags.SANITIZE_KEKULIZE
-    return RemoveHs(mol, params)
-def get_symmetry_rmsd(mol, coords1, coords2, mol2=None):
-    with time_limit(10):
-        mol = molecule.Molecule.from_rdkit(mol)
-        mol2 = molecule.Molecule.from_rdkit(mol2) if mol2 is not None else mol2
-        mol2_atomicnums = mol2.atomicnums if mol2 is not None else mol.atomicnums
-        mol2_adjacency_matrix = mol2.adjacency_matrix if mol2 is not None else mol.adjacency_matrix
-        RMSD = rmsd.symmrmsd(
-        coords1,
-        coords2,
-        mol.atomicnums,
-        mol2_atomicnums,
-        mol.adjacency_matrix,
-        mol2_adjacency_matrix,
-            )
-        return RMSD
 def find_correct_index_match(
     ref_coord, scaff_coord, index_matches, eps=1e-6
 ):
@@ -68,8 +35,8 @@ def find_correct_index_match(
         if rmsd < eps:
             return idx
     return
+
 def get_scaffold_from_index(ligand_mol, indices):
-    from rdkit.Geometry.rdGeometry import Point3D
 
     new_mol = Chem.RWMol(Chem.Mol())
     new_conf = Chem.Conformer(len(indices))
@@ -77,7 +44,7 @@ def get_scaffold_from_index(ligand_mol, indices):
     for idx in indices:
         atom = ligand_mol.GetAtomWithIdx(idx)
         atom_map[idx] = new_mol.AddAtom(atom)
-        atom_pos = Point3D(*ligand_mol.GetConformer(0).GetPositions()[idx])
+        atom_pos = Geometry.Point3D(*ligand_mol.GetConformer(0).GetPositions()[idx])
         new_conf.SetAtomPosition(atom_map[idx], atom_pos)
 
     indices = set(indices)
@@ -95,6 +62,19 @@ def get_scaffold_from_index(ligand_mol, indices):
     scaff_mol = new_mol.GetMol()
     conf = scaff_mol.AddConformer(new_conf, assignId=True)
     return scaff_mol
+
+def mapSmartMol(scaff_mol):
+    new_mol = Chem.RWMol(Chem.Mol())
+## map sacff_mol to new_mol
+    for atom in scaff_mol.GetAtoms():
+        new_atom = Chem.Atom(atom.GetAtomicNum())
+        new_atom.SetFormalCharge(atom.GetFormalCharge())
+        new_atom.SetNumExplicitHs(atom.GetNumExplicitHs())
+        new_mol.AddAtom(new_atom)
+    for bond in scaff_mol.GetBonds():
+        new_mol.AddBond(bond.GetBeginAtomIdx(), bond.GetEndAtomIdx(), bond.GetBondType())
+    new_mol = new_mol.GetMol()
+    return new_mol
 def get_scaffold_pose(sacffold_smart,ref_mol):
     scaff_ref = Chem.MolFromSmarts(sacffold_smart)
 
@@ -105,6 +85,64 @@ def get_scaffold_pose(sacffold_smart,ref_mol):
     frags = Chem.GetMolFrags(scaff_mol, asMols=True)
     mol = max(frags, key=lambda x: x.GetNumAtoms())
     return mol
+
+def get_scaffold_pose_new(sacffold_smart,ref_mol):
+
+    # try:
+    scaff_ref = Chem.MolFromSmarts(sacffold_smart)
+    # 先match下
+    
+    # ref_mol.UpdatePropertyCache(strict=False)
+    # scaff_ref.UpdatePropertyCache(strict=False)
+    matches = ref_mol.GetSubstructMatches(scaff_ref)
+    
+    if len(matches) < 1:
+        raise Exception('Could not find scaffold matches')
+    if len(matches) > 1:
+        print('Found multiple scaffold matches')
+    match = matches[0]
+    # update the scaffold with the reference molecule
+    for i, atom in enumerate(scaff_ref.GetAtoms()):
+        # atom.SetSymbol(ref_mol.GetAtoms()[match[i]].GetSymbol())
+        atom.SetFormalCharge(ref_mol.GetAtoms()[match[i]].GetFormalCharge())
+        atom.SetNumExplicitHs(ref_mol.GetAtoms()[match[i]].GetNumExplicitHs())
+    scaff_ref = mapSmartMol(scaff_ref)
+    # raise Exception(Chem.MolToSmiles(scaff_ref))
+
+    # scaff_ref = Chem.MolFromSmiles(Chem.MolToSmiles(scaff_ref))
+    scaffold_conformer = transfer_conformers(scaff_ref, ref_mol)
+    scaff_ref.AddConformer(scaffold_conformer)
+    
+    # transform the scaffold to the reference molecule
+    Chem.SanitizeMol(scaff_ref, sanitizeOps=Chem.SanitizeFlags.SANITIZE_ALL ^ Chem.SanitizeFlags.SANITIZE_KEKULIZE)
+    frags = Chem.GetMolFrags(scaff_ref, asMols=True)
+    mol = max(frags, key=lambda x: x.GetNumAtoms())
+
+
+    return mol
+
+def create_conformer(coords):
+    conformer = Chem.Conformer()
+    for i, (x, y, z) in enumerate(coords):
+        conformer.SetAtomPosition(i, Geometry.Point3D(x, y, z))
+    return conformer
+
+def transfer_conformers(scaf, mol):
+    matches = mol.GetSubstructMatches(scaf)
+
+    if len(matches) < 1:
+        raise Exception('Could not find scaffold matches')
+
+    if len(matches) > 1:
+        print('Found multiple scaffold matches')
+    
+    match = matches[0]
+    # for match in matches:
+    mol_coords = mol.GetConformer().GetPositions()
+    scaf_coords = mol_coords[np.array(match)]
+    scaf_conformer = create_conformer(scaf_coords)
+
+    return scaf_conformer
     
 def get_scaffold_smart(uniprot_id,serise_id,scaffold_info,serise_dir):
     

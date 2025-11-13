@@ -1,0 +1,5 @@
+id,smiles,num_rotatable_bonds,uniprot,series,QED
+O14757_Sries14139_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-0,Cc1cc2c(cc1Cl)NC(=O)Nc1cnc(C#N)c(n1)OCCCCCO2,0,O14757,Sries14139,0.7091116367055672
+O14757_Sries14139_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-1,N#Cc1ncc2nc1OCCCCCOc1cc(NO)c(Cl)cc1NC(=O)N2,1,O14757,Sries14139,0.5296677183724889
+O14757_Sries14139_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-2,CN(C)c1cc2c(cc1Cl)NC(=O)Nc1cnc(C#N)c(n1)OCCCCCO2,1,O14757,Sries14139,0.7289111906331259
+O14757_Sries14139_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-3,CNc1cc2c(cc1Cl)NC(=O)Nc1cnc(C#N)c(n1)OCCCCCO2,1,O14757,Sries14139,0.6653115098524375

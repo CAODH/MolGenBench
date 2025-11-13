@@ -1,26 +1,17 @@
-# 1. 更新了pytest 单元测试要求：每个模块或者预处理模块都要通过测试案例检查
-```bash
-# cd 到库目录
-cd ~/MolGenBench
-# 运行所有测试，并通过后提交PR
-pytest -q molgenbench/pytest/*
 
-```
-# 2. 需要主要添加补充环境安装的命令
-
-
-# MolGenBench
-
-sbdd Benchmark and evalation metrics
+# MolGenBench: CodeBase for "Benchmarking Real-World Applicability of Molecular Generative Models from De novo Design to Lead Optimization with MolGenBench"
 
 # Environment Setup
 ```bash
 conda create --name MolGenBench python=3.11
-conda install rdkit
-mamba install seaborn
+mamba install -c conda-forge rdkit numpy pandas seaborn scipy -y
 pip install --use-pep517 EFGs
 pip install tqdm joblib
 pip install pytest
+pip install swifter
+pip install medchem
+mamba install lilly-medchem-rules
+mamba install openbabel
 pip install posebusters spyrmsd
 
 # for vina docking
@@ -36,7 +27,28 @@ pip install -r requirements.txt
 mamba install -c mx reduce
 
 ```
+# BenchMark Results
+Please download from [Zenodo dataset](https://zenodo.org/records/17572553) the result on your device and unzip the files 
 
+# Test the sample and Environment Setup
+```bash
+cd ~/MolGenBench
+pytest -q molgenbench/pytest/*
+```
 
-######
-###
+# Runing The Evaluation
+
+## Denovo : compute hit rete/fraction/recovery 
+### Run the preprocess scripts
+
+ python molgenbench/preprocess/reference_process.py --reference_dir relative_dir/TestSamples
+ python molgenbench/preprocess/hit_info_preprocess_denovo.py --generated_dir relative_dir/TestSamples
+###  And then, using notebook to show the final results:
+``` For Example:
+   denovo hit rate
+   relative_dir/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_rate_boxplot.ipynb
+
+    denovo hit fraction
+   relative_dir/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_fraction_boxplot.ipynb
+``` 
+

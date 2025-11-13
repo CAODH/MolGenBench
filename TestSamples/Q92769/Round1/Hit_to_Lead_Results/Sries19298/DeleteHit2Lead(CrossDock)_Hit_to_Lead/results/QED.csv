@@ -1,0 +1,8 @@
+id,smiles,num_rotatable_bonds,uniprot,series,QED
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-0,CCC1=C(c2cccc(NC(=O)CCCCCCC(=O)NO)c2)NCC1,10,Q92769,Sries19298,0.29189554753653474
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-1,O=C(CCCCCCC(=O)Nc1cccc(-c2occc2CO)c1)NO,10,Q92769,Sries19298,0.29521339288874193
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-2,O=C(CCCCCCC(=O)Nc1cccc(C2=CCCO2)c1)NO,9,Q92769,Sries19298,0.3679388878622215
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-3,NC(=O)c1cnoc1-c1cccc(NC(=O)CCCCCCC(=O)NO)c1,10,Q92769,Sries19298,0.28466519583837374
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-4,O=C(CCCCCCC(=O)Nc1cccc(C2=C=NC=N2)c1)NO,9,Q92769,Sries19298,0.36848144610044586
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-5,O=C(CCCCCCC(=O)Nc1cccc([C@H]2CNC=N2)c1)NO,9,Q92769,Sries19298,0.3159288681262462
+Q92769_Sries19298_DeleteHit2Lead(CrossDock)_idx-in-all-generaetd-6,O=C(CCCCCCC(=O)Nc1cccc(C2=C=NN=N2)c1)NO,9,Q92769,Sries19298,0.36728599257254935

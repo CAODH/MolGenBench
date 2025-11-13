@@ -1,0 +1,9 @@
+id,smiles,num_rotatable_bonds,uniprot,series,SA
+Q92769_PocketFlow_idx-in-all-generaetd-0,Nc1cc(C(=O)OCCc2cc(C(F)(F)F)cc(-c3cccc4c(Cl)nc(F)cc34)c2O)ccn1,5,Q92769,,0.78
+Q92769_PocketFlow_idx-in-all-generaetd-1,N[C@H](Cl)C=CC=NN=O,3,Q92769,,0.54
+Q92769_PocketFlow_idx-in-all-generaetd-2,Nc1nccc(OCC=CCCc2cccc(Cc3ccccc3)c2)c1F,8,Q92769,,0.84
+Q92769_PocketFlow_idx-in-all-generaetd-3,CC=CCC1CCN(C[C@H]2OC(=O)c3cc(CC[C@@H]4COC=C(O)C4)cc4c3C2=CC=CC4)CC1,7,Q92769,,0.61
+Q92769_PocketFlow_idx-in-all-generaetd-4,CNCC=C[C@H](Cc1ccccc1)Cc1cc(-c2ccc(CC=C(N)O)cc2)cc(C(F)(F)F)c1,10,Q92769,,0.73
+Q92769_PocketFlow_idx-in-all-generaetd-5,O=[P@@](O)(OF)C(F)(F)OF,3,Q92769,,0.57
+Q92769_PocketFlow_idx-in-all-generaetd-6,O=C(O)C(=O)C(O)O,2,Q92769,,0.79
+Q92769_PocketFlow_idx-in-all-generaetd-7,CCc1ccccc1C=CCCc1cc(N)ncc1F,5,Q92769,,0.83
