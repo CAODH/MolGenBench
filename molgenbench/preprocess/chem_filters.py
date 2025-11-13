@@ -172,7 +172,7 @@ def main():
                         for method in os.listdir(os.path.join(father_dir, uniprot_id, sub_dir_name, 'Hit_to_Lead_Results', serise_id)):
                             all_generated_sdf.append(os.path.join(father_dir, uniprot_id, sub_dir_name, 'Hit_to_Lead_Results',serise_id, method, f"{uniprot_id}_{serise_id}_{method}.sdf"))
 
-    # Parallel(n_jobs=30)(delayed(get_medchem_filter_info)(sdf) for sdf in tqdm(all_generated_sdf, desc="Processing SDF files"))
+
     # sort all_generated_sdf by name
     all_generated_sdf = [sdf for sdf in all_generated_sdf if os.path.exists(sdf) and not os.path.exists(sdf.replace('.sdf', '_medchem_filter_results.csv'))]
     all_generated_sdf.sort(key=lambda x: x)

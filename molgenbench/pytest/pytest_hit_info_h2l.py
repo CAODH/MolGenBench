@@ -33,16 +33,15 @@ def test_hit_info_preprocess_h2l_main_writes_output(tmp_path):
    
 
     # record files before
-    # before = {p.relative_to(dest_root) for p in dest_sample.rglob("*") if p.is_file()}
 
-    mod.compute_hit_info_h2l(generated_dir=str(dest_root), round_id_list=[Round_id], model_name_list=['DeleteHit2Lead(CrossDock)'])
+    mod.compute_hit_info_h2l(generated_dir=str(dest_root), round_id_list=[Round_id], model_name_list=['DeleteHit2Lead(CrossDock)'],save_dir = str(tmp_path / "TestSample_H2L_Results"))
 
     # record files after
-    result_path = tmp_path / "TestSample_H2L" 
+    result_path = tmp_path / "TestSample_H2L_Results"
     after = {p.relative_to(tmp_path) for p in result_path.rglob("*") if p.is_file()}
 
     new_files = after - set()
-    assert new_files, f"No new files created by hit_info_preprocess_h2l.main; before={len(before)} after={len(after)}"
+    assert new_files, f"No new files created by hit_info_preprocess_h2l.main; after={len(after)}"
 
     # Prefer that at least one .csv was created (adjust as needed)
     assert any(str(f).endswith((".csv")) for f in new_files), (

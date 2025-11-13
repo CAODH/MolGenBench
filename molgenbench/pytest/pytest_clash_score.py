@@ -43,7 +43,7 @@ def test_clash_score_main_writes_output(tmp_path):
     after = {p.relative_to(dest_root) for p in dest_sample.rglob("*") if p.is_file()}
 
     new_files = after - before
-    assert new_files, f"No new files created by hit_info_preprocess_h2l.main; before={len(before)} after={len(after)}"
+    assert new_files, f"No new files created by molgenbench.preprocess.clash_score; before={len(before)} after={len(after)}"
 
     # Prefer that at least one .csv was created (adjust as needed)
     assert any(str(f).endswith((".csv")) for f in new_files), (

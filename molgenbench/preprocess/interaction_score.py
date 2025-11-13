@@ -98,8 +98,8 @@ def UniprotInteractions(uniprot_id,generated_dir,root_save_dir):
             continue
         if ligand_path_dir == 'reference_active_molecules':
 
-            ligand_path_list = [
-                            os.path.join(generated_dir,uniprot_id,ligand_path_dir,f'{uniprot_id}_reference_active_molecules_vina_docked.sdf')]
+            ligand_path_list = glob(
+                            os.path.join(generated_dir,uniprot_id,ligand_path_dir,f'{uniprot_id}_*.sdf'))
         
             for ligand_path in ligand_path_list:
                 try:
@@ -116,8 +116,8 @@ def UniprotInteractions(uniprot_id,generated_dir,root_save_dir):
                     
         else:
             # len(glob(os.path.join('/home/datahouse1/caoduanhua/MolGens/SelfConstructedBenchmark/selfGenBench_repeat_output_250218','O14757','Round1','*','*','*.sdf')))
-            ligand_path_list = glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*','*_vina_docked.sdf')) + \
-                                glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*_vina_docked.sdf'))
+            ligand_path_list = glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*','*.sdf')) + \
+                                glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*.sdf'))
             for ligand_path in ligand_path_list:
                 try:
                     save_dir = os.path.dirname(ligand_path).replace(generated_dir,root_save_dir)
@@ -143,4 +143,4 @@ if __name__ == '__main__':
     root_save_dir = args.root_save_dir if args.root_save_dir is not None else args.generated_dir
     cpu_counts = multiprocessing.cpu_count() - 15 if args.n_jobs is None else args.n_jobs
 
-    _ = Parallel(n_jobs=cpu_counts,backend='loky',verbose = 20)(delayed(UniprotInteractions)(uniprot_id) for uniprot_id in tqdm.tqdm(os.listdir(generated_dir),total = len(os.listdir(generated_dir))))
+    _ = Parallel(n_jobs=cpu_counts,backend='loky',verbose = 20)(delayed(UniprotInteractions)(uniprot_id,generated_dir,root_save_dir) for uniprot_id in tqdm.tqdm(os.listdir(generated_dir),total = len(os.listdir(generated_dir))))

@@ -7,7 +7,6 @@ from molgenbench.io.types import MoleculeRecord
 import logging
 import traceback
 
-# 全局注册表
 METRIC_REGISTRY: Dict[str, Type["MetricBase"]] = {}
 
 

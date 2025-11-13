@@ -99,7 +99,7 @@ from tqdm import tqdm
 import glob
 
 from collections import defaultdict
-def compute_hit_info_h2l(generated_dir,round_id_list,model_name_list):
+def compute_hit_info_h2l(generated_dir,round_id_list,model_name_list,save_dir = None):
     """
     Compute hit information for hit-to-lead generated molecules and save per-model CSV reports.
     This function scans a directory of generated and reference molecules organized by Uniprot ID,
@@ -123,7 +123,7 @@ def compute_hit_info_h2l(generated_dir,round_id_list,model_name_list):
 
     for round_id in round_id_list:
         
-        save_dir = os.path.join(os.path.dirname(generated_dir),'TestSample_H2L',f'Round{round_id}','Hit_to_Lead_Results','Hit_Info_Results')
+        save_dir = os.path.join(save_dir,f'Round{round_id}')
         for model_name in model_name_list:
             # try:
                 if os.path.exists(os.path.join(save_dir,f'{model_name}.csv')):
@@ -194,7 +194,7 @@ def compute_hit_info_h2l(generated_dir,round_id_list,model_name_list):
                 
                 result['Reference_Smiles_num']=result['Reference_Smiles'].apply(len)
                 
-                # result['Finded_Smiles'] = result.apply(lambda x:list(set(x.Reference_Smiles).intersection(set(x.Generated_Smiles))),axis = 1)
+
                 result['Finded_Smiles_and_Inchi'] = result.swifter.apply(lambda x:find_smiles_and_inchi(set(x.Reference_Smiles),set(x.Generated_Smiles),x.UniprotID,generated_dir),axis = 1)
                 result['Finded_Smiles'] = result['Finded_Smiles_and_Inchi'].apply(lambda x: x[0])
                 result['Finded_Smiles_Num']=result['Finded_Smiles'].apply(len)
@@ -212,38 +212,35 @@ def compute_hit_info_h2l(generated_dir,round_id_list,model_name_list):
                 
                 result['Finded_Scaffolds_and_Inchi'] = result.swifter.apply(lambda x:find_scaffold_and_inchi(set(x.Reference_Scaffolds),set(x.Generated_Scaffolds),x.UniprotID,generated_dir),axis = 1)
                 result['Finded_Scaffolds'] = result['Finded_Scaffolds_and_Inchi'].apply(lambda x: x[0])
-                # result['Finded_Scaffolds'] = result.apply(lambda x:list(set(x.Reference_Scaffolds).intersection(set(x.Generated_Scaffolds))),axis = 1)
+
                 result['Finded_Scaffolds_Num'] = result['Finded_Scaffolds'].apply(len)
                 result['Finded_Scaffolds_Inchi'] = result['Finded_Scaffolds_and_Inchi'].apply(lambda x: x[1])
                 result['Finded_Scaffolds_Inchi_Num'] = result['Finded_Scaffolds_Inchi'].apply(len)
-                # 计算hit 到的骨架在所有分子里面占到的比例
+
                 result['Finded_Scaffolds_Frequency_Rate'] =result.apply(lambda x:x.Finded_Scaffolds_Inchi_Num/len(x.Generated_Smiles),axis=1)
                 result['Finded_Scaffolds_Rate'] = result['Finded_Scaffolds_Num']/result['Reference_Scaffolds_Num']
                 
-                # print('Sucessed Find at least one Scaffold',len(result[result['Finded_Scaffolds_Num'] >0]))
+
 
                 # save result csv file
                 os.makedirs(save_dir,exist_ok=True)
                 result.to_csv(os.path.join(save_dir,f'{model_name}.csv'))
-            # except Exception as e:
-            #     print(f'Error in {model_name}')
-            #     print('Error:',str(e))
-            #     continue
+
 def main(argv=None):
     import argparse
     parser = argparse.ArgumentParser(description='PreProcess the hit information of generated molecules')
     parser.add_argument('--generated_dir', type=str, help='The directory of active compounds', required=True)
+    parser.add_argument('--save_dir', type=str, help='The directory of results', required=True)
     parser.add_argument('--round_id_list', type=str, nargs='*', default=None, help='The list of uniprot ids to process; if not given, process all')
-    parser.add_argument('--model_name_list', type=str, nargs='*', default=['DecompDiff','diffSBDD_cond_crossdocked','diffSBDD_cond_moad','FLAG','MolCraft','PocketFlow','TamGen','Pocket2Mol','SurfGen','TargetDiff'], help='The list of model names to process; if not given, process all')
+    parser.add_argument('--model_name_list', type=str, nargs='*', default=['DeleteHit2Lead(CrossDock)'], help='The list of model names to process; if not given, process all')
 
     args = parser.parse_args(argv)
     generated_dir = args.generated_dir
     model_name_list = args.model_name_list
     round_id_list = args.round_id_list
-    
+    save_dir = args.save_dir
 
-    compute_hit_info_h2l(generated_dir,round_id_list, model_name_list)
-    
+    compute_hit_info_h2l(generated_dir,round_id_list,model_name_list,save_dir)
 
 
 

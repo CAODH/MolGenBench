@@ -77,10 +77,10 @@ def test_hit_info_preprocess_denovo_main_writes_output(tmp_path):
     # record files before
     # before = {p.relative_to(dest_root) for p in dest_root.rglob("*") if p.is_file()}
 
-    mod.compute_hit_info(generated_dir=str(dest_root), round_id_list=[Round_id], model_name_list=['PocketFlow', 'TamGen'])
+    mod.compute_hit_info(generated_dir=str(dest_root), round_id_list=[Round_id], model_name_list=['PocketFlow', 'TamGen'],save_dir = str(tmp_path / "TestSample_Denovo_Results"))
 
     # record files after
-    result_path = tmp_path / "TestSample_Denovo" 
+    result_path = tmp_path / "TestSample_Denovo_Results"
     after = {p.relative_to(tmp_path) for p in result_path.rglob("*") if p.is_file()}
 
     new_files = after - set()

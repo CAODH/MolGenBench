@@ -1,17 +1,5 @@
-# 1. 更新了pytest 单元测试要求：每个模块或者预处理模块都要通过测试案例检查
-```bash
-# cd 到库目录
-cd ~/MolGenBench
-# 运行所有测试，并通过后提交PR
-pytest -q molgenbench/pytest/*
-
-```
-# 2. 需要主要添加补充环境安装的命令
-
 
 # MolGenBench
-
-sbdd Benchmark and evalation metrics
 
 # Environment Setup
 ```bash
@@ -39,7 +27,28 @@ pip install -r requirements.txt
 mamba install -c mx reduce
 
 ```
+# Test the sample and Environment Setup
+```bash
 
+cd ~/MolGenBench
+pytest -q molgenbench/pytest/*
 
-######
-###
+# Runing The Evaluation
+## Denovo : compute hit rete/fraction/recovery 
+preprocess
+ python molgenbench/preprocess/reference_process.py --reference_dir /home/data-house-01/cdhofficial/MolGens/TestSamples
+ python molgenbench/preprocess/hit_info_preprocess_denovo.py --generated_dir /home/data-house-01/cdhofficial/MolGens/TestSamples
+
+ And then, using notebook to show the final results:
+ For Example:
+    denovo hit rate
+    /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_rate_boxplot.ipynb
+
+    denovo hit fraction
+    /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_fraction_boxplot.ipynb
+## H2L compute hit rete/fraction/recovery 
+
+    python /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/molgenbench/preprocess/hit_info_preprocess_h2l.py --generated_dir /home/data-house-01/cdhofficial/MolGens/TestSamples 
+## interaction score
+python /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/molgenbench/preprocess/interaction_score.py --generated_dir /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/TestSamples --root_save_dir /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/test_interaction
+# 

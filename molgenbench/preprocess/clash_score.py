@@ -44,8 +44,8 @@ def UniprotClash(uniprot_id,generated_dir,root_save_dir):
             continue
         if ligand_path_dir == 'reference_active_molecules':
 
-            ligand_path_list = [
-                            os.path.join(generated_dir,uniprot_id,ligand_path_dir,f'{uniprot_id}_reference_active_molecules_vina_docked.sdf')]
+            ligand_path_list = glob(
+                            os.path.join(generated_dir,uniprot_id,ligand_path_dir,f'{uniprot_id}_*.sdf'))
 
             for ligand_path in ligand_path_list:
                 try:
@@ -67,8 +67,8 @@ def UniprotClash(uniprot_id,generated_dir,root_save_dir):
                     print(f'error in {ligand_path}')
         else:
             # len(glob(os.path.join('/home/datahouse1/caoduanhua/MolGens/SelfConstructedBenchmark/selfGenBench_repeat_output_250218','O14757','Round1','*','*','*.sdf')))
-            ligand_path_list = glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*','*_vina_docked.sdf')) + \
-                                glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*_vina_docked.sdf'))
+            ligand_path_list = glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*','*.sdf')) + \
+                                glob(os.path.join(generated_dir,uniprot_id,ligand_path_dir,'*','*','*.sdf'))
             for ligand_path in ligand_path_list:
                 try:
                     save_dir = os.path.dirname(ligand_path).replace(generated_dir,root_save_dir)
