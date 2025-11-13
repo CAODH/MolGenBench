@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from pathlib import Path
 from typing import Dict, Any
 from rdkit import Chem
@@ -8,6 +9,7 @@ from molgenbench.metrics.base import MetricBase, Metric
 from molgenbench.metrics.basic import is_valid
 from molgenbench.io.types import MoleculeRecord
 
+import prolif as plf
 from posebusters import PoseBusters
 from posecheck import PoseCheck
 from spyrmsd import molecule
@@ -91,6 +93,54 @@ class StrainEnergyMetrics(Metric):
         return strain
     
 
+class ClashScoreMetric(Metric):
+    """
+    Compute clash score metric for a given molecule using PoseCheck.
+    Outputs the clash score value.
+    """
+    name = "ClashScore"
+    
+    def _filterMol(self, mol: Chem.Mol) -> bool:
+        """
+        Filter molecule based on conformer.
+        """
+        if not is_valid(mol):
+            return False
+        
+        if mol.GetNumAtoms() > 0 and not np.isnan(mol.GetConformer().GetPositions()).any():
+            return True
+        else:
+            return False
+
+    def compute(self, record: MoleculeRecord):
+        """
+        Compute clash score metric for the molecule.
+
+        Args:
+            record: MoleculeRecord object
+        """
+        clash_score = None
+        mol = record.rdkit_mol
+        
+        if not self._filterMol(mol):
+            record.metadata[self.name] = clash_score
+            return record.metadata[self.name]
+        
+        mol = Chem.AddHs(mol, addCoords=True)
+        protein_path = record.metadata.get("protein_path", None)
+        
+        try:
+            pc = PoseCheck()
+            pc.load_ligands_from_mols([mol])
+            pc.load_protein_from_pdb(protein_path)
+            clash_score = pc.calculate_clashes()[0]
+        except:
+            clash_score = None
+
+        record.metadata[self.name] = clash_score
+        return clash_score
+
+
 class RMSDMetric(Metric):
     """
     Compute the redocking RMSD between a predicted and a reference molecule.
@@ -140,3 +190,70 @@ class RMSDMetric(Metric):
 
         record.metadata[self.name] = rmsd_val
         return rmsd_val
+    
+
+class InteractionScoreMetric(Metric):
+    """
+    Compute interaction score metric for a given molecule.
+    Outputs the interaction score value.
+    """
+    name = "InteractionScore"
+
+    
+    def _filterMol(self, mol: Chem.Mol) -> bool:
+        """
+        Filter atoms in a molecule based on their atomic symbol.
+        """
+        if not is_valid(mol):
+            return False
+        
+        for atom in mol.GetAtoms():
+            if atom.GetSymbol() == 'As':
+                return False
+        
+        if mol.GetNumAtoms() > 0 and not np.isnan(mol.GetConformer().GetPositions()).any():
+            return True
+        else:
+            return False
+        
+    
+    def _nonBondInteractions(self, mol_lig: Chem.Mol, mol_pro: Chem.Mol) -> pd.DataFrame:
+        """Compute interaction score using ProLIF."""
+        
+        all_interactions = plf.Fingerprint.list_available()
+        fp = plf.Fingerprint(interactions=all_interactions)
+        
+        fp.run_from_iterable([mol_lig], mol_pro, progress=False, n_jobs=1)
+        df = fp.to_dataframe()
+        return df
+
+    def compute(self, record: MoleculeRecord):
+        """
+        Compute interaction score metric for the molecule.
+
+        Args:
+            record: MoleculeRecord object
+        """
+        interaction_score = None
+        mol = record.rdkit_mol
+        
+        if not self._filterMol(mol):
+            record.metadata[self.name] = interaction_score
+            return record.metadata[self.name]
+        
+        protein_path = record.metadata.get("protein_path", None)
+        
+        mol = Chem.AddHs(mol, addCoords=True)
+        mol_pro = Chem.MolFromPDBFile(protein_path, removeHs=False)
+        
+        mol_lig = plf.Molecule.from_rdkit(mol)
+        mol_pro = plf.Molecule(mol_pro)
+        
+        try:
+            results = self._nonBondInteractions(mol_lig, mol_pro)
+            interaction_score = results.to_dict()
+        except:
+            interaction_score = None
+
+        record.metadata[self.name] = interaction_score
+        return interaction_score
