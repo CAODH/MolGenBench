@@ -1,6 +1,8 @@
 
 # MolGenBench: CodeBase for "Benchmarking Real-World Applicability of Molecular Generative Models from De novo Design to Lead Optimization with MolGenBench"
+![MolGenBench overview](./FigShow/MolGenBench.svg "Overview of MolGenBench pipeline")
 
+**Please note that our current code only provides the computational workflow for reproducing the paper's results. A more elegantly refactored codebase will be updated as soon as possible.**
 # Environment Setup
 ```bash
 conda create --name MolGenBench python=3.11
@@ -45,7 +47,7 @@ pytest -q molgenbench/pytest/*
  python molgenbench/preprocess/hit_info_preprocess_denovo.py --generated_dir relative_dir/TestSamples
 ###  And then, using notebook to show the final results:
 ``` For Example:
-   denovo hit rate
+   denovo hit rate (please replace the name of dir)
    relative_dir/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_rate_boxplot.ipynb
 
     denovo hit fraction
