@@ -1,5 +1,5 @@
 
-# MolGenBench
+# MolGenBench: CodeBase for "Benchmarking Real-World Applicability of Molecular Generative Models from De novo Design to Lead Optimization with MolGenBench"
 
 # Environment Setup
 ```bash
@@ -27,28 +27,28 @@ pip install -r requirements.txt
 mamba install -c mx reduce
 
 ```
+# BenchMark Results
+Please download from [Zenodo dataset](https://zenodo.org/records/17572553) the result on your device and unzip the files 
+
 # Test the sample and Environment Setup
 ```bash
-
 cd ~/MolGenBench
 pytest -q molgenbench/pytest/*
+```
 
 # Runing The Evaluation
-## Denovo : compute hit rete/fraction/recovery 
-preprocess
- python molgenbench/preprocess/reference_process.py --reference_dir /home/data-house-01/cdhofficial/MolGens/TestSamples
- python molgenbench/preprocess/hit_info_preprocess_denovo.py --generated_dir /home/data-house-01/cdhofficial/MolGens/TestSamples
 
- And then, using notebook to show the final results:
- For Example:
-    denovo hit rate
-    /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_rate_boxplot.ipynb
+## Denovo : compute hit rete/fraction/recovery 
+### Run the preprocess scripts
+
+ python molgenbench/preprocess/reference_process.py --reference_dir relative_dir/TestSamples
+ python molgenbench/preprocess/hit_info_preprocess_denovo.py --generated_dir relative_dir/TestSamples
+###  And then, using notebook to show the final results:
+``` For Example:
+   denovo hit rate
+   relative_dir/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_rate_boxplot.ipynb
 
     denovo hit fraction
-    /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_fraction_boxplot.ipynb
-## H2L compute hit rete/fraction/recovery 
+   relative_dir/FigShow/Denovo_hit_recovery/Deonovo_repeats_hit_fraction_boxplot.ipynb
+``` 
 
-    python /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/molgenbench/preprocess/hit_info_preprocess_h2l.py --generated_dir /home/data-house-01/cdhofficial/MolGens/TestSamples 
-## interaction score
-python /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/molgenbench/preprocess/interaction_score.py --generated_dir /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/TestSamples --root_save_dir /home/data-house-01/cdhofficial/MolGens/MolGenBench-dev/test_interaction
-# 
