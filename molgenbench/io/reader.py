@@ -6,7 +6,8 @@ from molgenbench.io.types import MoleculeRecord
 
 def read_sdf_to_records(
     path: Path,
-    protein_path: str
+    protein_path: str,
+    ref_active_path: str,
 ) -> List[MoleculeRecord]:
     """
     Read one SDF file and convert all molecules into MoleculeRecord objects.
@@ -33,6 +34,7 @@ def read_sdf_to_records(
             metadata={
                 "source_file": str(path),
                 "protein_path": protein_path, 
+                "ref_active_path": ref_active_path,
             },
         )
         records.append(record)

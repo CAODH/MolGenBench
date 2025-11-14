@@ -148,11 +148,15 @@ class Evaluator:
         for uniprot in os.listdir(root_dir):
             uniprot_path = os.path.join(root_dir, uniprot, round, mode)
             prot_path = os.path.join(root_dir, uniprot, f"{uniprot}_prep.pdb")
+            ref_active_path = os.path.join(uniprot_path, "reference_active_molecules", f"{uniprot}_reference_active_molecules.sdf")
 
             if mode == "De_novo_Results":
                 sdf_path = os.path.join(uniprot_path, model_name, f"{uniprot}_{model_name}.sdf")
+                if not os.path.exists(sdf_path):
+                    continue
+                
                 docked_path = sdf_path.replace(".sdf", "_vina_docked.sdf")
-                records = read_sdf_to_records(sdf_path, prot_path)
+                records = read_sdf_to_records(sdf_path, prot_path, ref_active_path)
                 records = attach_docked_molecules(records, docked_path)
                 
                 records = self.evaluate_molecule_metrics(records)
@@ -172,8 +176,11 @@ class Evaluator:
                     series_path = os.path.join(uniprot_path, series_id)
                     
                     sdf_path = os.path.join(series_path, model_name, f"{uniprot}_{series_id}_{model_name}.sdf")
+                    if not os.path.exists(sdf_path):
+                        continue
+                    
                     docked_path = sdf_path.replace(".sdf", "_vina_docked.sdf")
-                    records = read_sdf_to_records(sdf_path, prot_path)
+                    records = read_sdf_to_records(sdf_path, prot_path, ref_active_path)
                     records = attach_docked_molecules(records, docked_path)
                     
                     records = self.evaluate_molecule_metrics(records)
